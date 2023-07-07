@@ -15,7 +15,7 @@ tr:hover {background-color: lightgrey;}
     overflow-x: scroll;
     background-color: lightgrey;
     border: 2px solid black;
-    margin-top: 5px;
+    margin-top: 15px;
 }
 .singleContainer {
     display: flex;
@@ -24,8 +24,13 @@ tr:hover {background-color: lightgrey;}
     background-color: white;
     color: black;
     margin: 10px;
-    height: 200px;
+    height: 300px;
     min-width: 200px;
+}
+
+.singleContainer:hover {
+    cursor: pointer;
+    box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.5);
 }
 
 .nameStyle {
@@ -33,7 +38,7 @@ tr:hover {background-color: lightgrey;}
     color: white;
     text-align: center;
     width: 100%; 
-    height: 15%;
+    height: 25px;
     padding: 2%;
     margin:0;
 
@@ -43,4 +48,13 @@ tr:hover {background-color: lightgrey;}
     font-size: small;
     text-align: start;
 
+}
+
+.searchContainer {
+    margin-left: 1%;
+}
+
+.searchInput {
+    height: 25px;
+    width: 25%
 }
