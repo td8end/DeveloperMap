@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from "styled-components";
-import { AppContext } from './App';
+import { AppContext } from '../../App';
 
 
 export default function Admin() {

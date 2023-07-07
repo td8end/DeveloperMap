@@ -2,9 +2,9 @@ import React, { createContext } from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
 import styled from "styled-components"
 import { useState, useEffect } from 'react';
-import User from './User';
-import Login from './Login';
-import Admin from './Admin';
+import User from './Components/User/User';
+import Login from './Components/Login/Login';
+import Admin from './Components/Admin/Admin';
 
 
 
