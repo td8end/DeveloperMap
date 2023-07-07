@@ -21,7 +21,7 @@ const HeaderContainer = styled(Container)``
 const HeaderTitle = styled.h1`
   text-align: center;
   color: white;
-  padding-top:10px;
+  padding-top: 5px;
   margin: 0;
   border-top: 2px solid blue;
 `
