@@ -19,19 +19,19 @@ const markers = [
     authorized: 10,
   },
   {    
-    name: 'Fred3',
+    name: 'Fred8',
     geocode: [39.0997, -94.5786],
     popUp: 'Hello i am marker 1',
     authorized: 10,
   },
   {
-    name: 'Fred4',
+    name: 'Fred8',
     geocode: [39.0997, -94.5786],
     popUp: 'Hello i am marker 1',
     authorized: 10,
   },
   {
-    name: 'Fred5',
+    name: 'Fred8',
     geocode: [39.0997, -94.5786],
     popUp: 'Hello i am marker 1',
     authorized: 10,
@@ -81,7 +81,9 @@ const markers = [
 ]
 
 export default function User() {
-  const { coord , setCoord } = useState([])
+  const [ coord , setCoord ] = useState([])
+  const [ searchText, setSearchText ] = useState("")
+
 
   return (
     <>
@@ -89,8 +91,14 @@ export default function User() {
       <Map />
     </div>
     <div >
+           <div className='searchContainer'id="searchContainer>">
+              <input className='searchInput' id="searchInput" type="text" name="search" 
+                  placeholder="Search For Coder..." onChange={()=>{setSearchText(document.getElementById("searchInput").value)}}></input>
+            </div>
+            {console.log(searchText)}
           <div className='groupContainer '>
-          {markers.map(marker => (
+             {markers.filter(marker=>marker.name.toLowerCase().startsWith(searchText))
+              .map(marker => (
                     // <div key={marker.id} className="characterTile" onClick={() => setDisplay(marker)}>
                     <div className='singleContainer' onClick={() => setCoord(marker.geocode)}>
                       <h3 className='nameStyle'>{marker.name}</h3>
@@ -100,7 +108,7 @@ export default function User() {
                     </div>
                     ))}
           </div>
-            {console.log(coord)}
+            {/* {console.log(coord)} */}
       </div>
     {/* </div> */}
     </>
