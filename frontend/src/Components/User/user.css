@@ -15,7 +15,6 @@ tr:hover {background-color: lightgrey;}
     overflow-x: scroll;
     background-color: lightgrey;
     border: 2px solid black;
-    margin-top: 15px;
 }
 .singleContainer {
     display: flex;
@@ -50,11 +49,16 @@ tr:hover {background-color: lightgrey;}
 
 }
 
+.SearchField {
+    display: flex;
+    justify-content: space-between;
+}
+
 .searchContainer {
-    margin-left: 1%;
+    margin: 1%;
 }
 
 .searchInput {
     height: 25px;
-    width: 25%
+    width: 300px;
 }
