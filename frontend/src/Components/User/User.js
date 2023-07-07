@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from "styled-components";
-import { AppContext } from './App';
-import Map from './Map';
+import { AppContext } from '../../App';
+import Map from '../Map/Map';
 import './user.css';
 
 const markers = [
@@ -81,7 +81,7 @@ const markers = [
 ]
 
 export default function User() {
-  const { display , setDisplay } = useState([])
+  const { coord , setCoord } = useState([])
 
   return (
     <>
@@ -92,35 +92,15 @@ export default function User() {
           <div className='groupContainer '>
           {markers.map(marker => (
                     // <div key={marker.id} className="characterTile" onClick={() => setDisplay(marker)}>
-                    <div className='singleContainer' onClick={() => alert(`${marker.name} was just clicked`)}>
+                    <div className='singleContainer' onClick={() => setCoord(marker.geocode)}>
                       <h3 className='nameStyle'>{marker.name}</h3>
                       <p className='pstyle'>Location: {marker.geocode}</p>
                       <p className='pstyle'>Detials: {marker.popUp}</p>
                       <p className='pstyle'>Authorized: {marker.authorized}</p>
                     </div>
-  
                     ))}
           </div>
-          <div>
-          <table>
-                    <tr>
-                      <th>Name</th>
-                      <th>Lat/Long</th>
-                      <th>PopUp</th>
-                      <th>Authorized</th>
-                    </tr>
-                    {markers.map(marker => (
-                    // <div key={marker.id} className="characterTile" onClick={() => setDisplay(marker)}>
-                    <tr>
-                      <td>{marker.name}</td>
-                      <td>{marker.geocode}</td>
-                      <td>{marker.popUp}</td>
-                      <td>{marker.authorized}</td>
-                    </tr>
-                    ))}
-                  </table>
-          </div>
-
+            {console.log(coord)}
       </div>
     {/* </div> */}
     </>

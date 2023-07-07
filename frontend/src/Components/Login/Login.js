@@ -2,7 +2,7 @@ import React, { createContext } from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
 import styled from "styled-components"
 import { useState, useEffect } from 'react';
-import User from './User';
+import User from '../User/User';
 
 
 // This is the styling section 

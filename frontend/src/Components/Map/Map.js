@@ -89,7 +89,7 @@ export default function Map() {
 
   // CREATES CUSTOM ICON FOR INDIVIDUAL
   const customIcon = new Icon ({
-    iconUrl: require('./img/user.png'),
+    iconUrl: require('../.././img/user.png'),
     iconSize: [38,38]
   })
 
