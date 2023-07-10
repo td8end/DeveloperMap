@@ -11,12 +11,18 @@ import './App.css';
 
 function App() {
   const navigate = useNavigate();
+  const [markers, setMarkers] = useState([])
+
+
+  useEffect(() => {
+    fetch('http://localhost:8081/personnel')
+      .then((res) => res.json())
+      .then(data => setMarkers(data))
+  },[])
+console.log(markers)
 
   return (
     <>
-      {/* <HeaderContainer>
-        <HeaderTitle>DevMap</HeaderTitle>
-      </HeaderContainer> */}
 
       <div className='HeaderStyle' id='header'>
             <h1 className='HeaderTitle' id='header-title' onClick={() => navigate('/')}>DevMap</h1>
