@@ -95,12 +95,21 @@ function Admin() {
   const navigate = useNavigate();
   const [ searchText, setSearchText ] = useState("")
   const [ data, setData ] = useState([])
+  const [ username, setName ] = useState('')
+  const [ userbase, setBase ] = useState('')
 
-  const getInitialState = () => {
-    const value = [];
-    return value;
-  };
+  const handleSubmit = (e) => {
+    // e.preventDefault();
+    const AdminUpdate = { username, userbase};
+    console.log(AdminUpdate);
+  }
 
+  const AllData = (markers) => {
+    setData(markers)
+    setName(markers.name)
+    setBase(markers.base)
+
+  }
 
   return (
     <>
@@ -115,11 +124,9 @@ function Admin() {
             </div>
             <div className='AdmingroupContainer '>
               {markers.filter(marker=>marker.name.toLowerCase().startsWith(searchText) || marker.base.toLowerCase().startsWith(searchText)  )
-                            // {markers.filter(marker=>marker.name.toLowerCase().startsWith(searchText) || marker.base.toLowerCase().startsWith(searchText)  )
 
                 .map(marker => (
-                      // <div key={marker.id} className="characterTile" onClick={() => setDisplay(marker)}>
-                      <div className='AdminsingleContainer' onClick={() => setData(marker)}>
+                      <div className='AdminsingleContainer' onClick={() => AllData(marker)}>
                         <h3 className='nameStyle'>{marker.name}</h3>
                         <p className='Adminpstyle'>Location: {marker.geocode}</p>
                         <p className='Adminpstyle'>Detials: {marker.popUp}</p>
@@ -132,374 +139,28 @@ function Admin() {
           <div className='FormInput'>
                   <div className='FormHeader'>
                     <h1 className='FormTitle'>Details for: {data.name}</h1>
-                    {/* <div className='AdminsingleContainer' onClick={() => setData(marker)}> */}
-                    {/* <button className='ClearBtn' onClick={() => reload()}>CLEAR FORM</button> */}
                   </div>
                   <div className='FormDetails'>
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                        {/* <button className='Edit' onClick={() => value="user"}>Edit</button> */}
 
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
-
-                      <span>                    
-                        <label for='UserName'>NAME: </label>
-                        <input id="UserName" name="UserName" placeholder="Name" type="text" value={data.name}/>
-                      </span>
-
-                      <span>
-                        <label for='UserBase'>Duty Location: </label>
-                        <input id="UserBase" name="UserBase" placeholder="Base" type="text" value={data.base}/>
-                      </span>
+                      <form id='myForm' onSubmit = {handleSubmit}>
+                            <label> Name </label> 
+                            <input
+                              type='text'
+                              value={ username }
+                              onChange={(e) => setName(e.target.value)}
+                              />
+
+                            <label> Base </label> 
+                            <input
+                              type='text'
+                              value={userbase}
+                              onChange={(e) => setBase(e.target.value)}
+                              />
+                      </form>
+                            
                   </div>
                   <div className='Footer'>
-                    <button className='UpdateBtn' onClick={() => setData([])}>UPDATE USER</button>
+                    <button className='UpdateBtn' onClick={() => {handleSubmit()}}>UPDATE USER</button>
                     <button className='AddBtn' onClick={() => setData([])}>ADD USER</button>
                     <button className='DeleteBtn' onClick={() => setData([])}>DELETE USER</button>
                   </div>
