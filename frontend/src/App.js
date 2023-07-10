@@ -5,45 +5,22 @@ import { useState, useEffect } from 'react';
 import User from './Components/User/User';
 import Login from './Components/Login/Login';
 import Admin from './Components/Admin/Admin';
-
-
-
-// This is the styling section 
-const Container = styled.div`
-  width: 100vw;
-  height: 5vw;
-  margin: 0;
-  background-color: black;
-`
-
-const HeaderContainer = styled(Container)``
-
-const HeaderTitle = styled.h1`
-  text-align: center;
-  color: white;
-  padding-top: 1%;
-  margin: 0;
-  border-top: 2px solid blue;
-`
-
-// This is the styling section 
-// Below is the Fetch and variable setting
-
+import { useNavigate } from 'react-router-dom'
+import './App.css';
 
 
 function App() {
-  const [signIn, setSignIn] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <>
-    {/* first row of header */}
-      <HeaderContainer>
+      {/* <HeaderContainer>
         <HeaderTitle>DevMap</HeaderTitle>
-      </HeaderContainer>
-{/* 
-      <FormContainer>
-        <h1>Login In</h1>
-      </FormContainer> */}
+      </HeaderContainer> */}
+
+      <div className='HeaderStyle' id='header'>
+            <h1 className='HeaderTitle' id='header-title' onClick={() => navigate('/')}>DevMap</h1>
+      </div>
 
       {/* this is the breadcromb bar */}
       <Routes>

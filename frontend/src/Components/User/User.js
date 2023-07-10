@@ -108,10 +108,6 @@ export default function User() {
               <input className='searchInput' id="searchInput" type="text" name="search" 
                   placeholder="Search For Coder or Base..." onChange={()=>{setSearchText(document.getElementById("searchInput").value)}}></input>
             </div>
-            {/* <div className='searchContainer'id="searchContainer>">
-              <input className='searchInput' id="searchInput2" type="text" name="search" 
-                  placeholder="Search For Base..." onChange={()=>{setSearchText(document.getElementById("searchInput2").value)}}></input>
-            </div> */}
         </div>
             {console.log(searchText)}
           <div className='groupContainer '>

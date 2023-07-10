@@ -3,39 +3,49 @@ import { Link, Routes, Route } from 'react-router-dom';
 import styled from "styled-components"
 import { useState, useEffect } from 'react';
 import User from '../User/User';
-
+import './Login.css';
+import { useNavigate } from 'react-router-dom';
 
 // This is the styling section 
-const FormContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    margin: auto;
-    margin-top: 20vw;
-    background-color: grey;
-    width: 40vw;
-    height: 40vw;
-`
+
 
 // This is the styling section 
 // Below is the Fetch and variable setting
 
 
 function Login() {
-  const [signIn, setSignIn] = useState(false);
+  const navigate = useNavigate()
+
+  const getInitialState = () => {
+    const value = 'user';
+    return value;
+  };
+
+  const [signIn, setSignIn] = useState(getInitialState);
+
+  const handleChange = (e) => {
+    setSignIn(e.target.value)
+  };
+
+
 
   return (
     <>
-
-      <FormContainer>
+      <div className='FormContainer'>
         <h1>Login In</h1>
-      </FormContainer>
-
-      {/* this is the breadcromb bar */}
-      {/* <Routes>
-          <Route path="/user" element={<User/>}/>
-          {/* <Route path="/admin" element={<Admin />} /> */}
-      {/* </Routes> */} */
+        <div>
+          <h4><label for='loginSelect'>Role: </label>
+          <select value={signIn} onChange={handleChange} className='selectCss' id="loginSelect">
+            <option value='/user'>User</option>
+            <option value='/admin'>Admin</option>
+          </select></h4>
+        </div>
+        <div>
+          <input className='userInputs' name='UserId' placeholder="User Name..." type='text' />
+          <input className='userInputs' name='PassWord' placeholder="User Password..." type='text' />
+        </div>
+        <button className='LoginBtn' onClick={() => navigate(`${signIn}`)}>Login</button>
+      </div>
     </>
   );
 }
