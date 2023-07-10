@@ -16,6 +16,16 @@ app.get('/branch', (req, res) => {
         })
 })
 
+app.get('/personnel', (req, res) => {
+    knex('personnel')
+        .select('*')
+        .then(result => {
+            var personnelArray = result.map(prsnl => prsnl)
+            res.json(personnelArray);
+        })
+})
+
+
 app.listen(port, () => {
     console.log(`Server running at ${port}.  Let's see some queries!`)
 })

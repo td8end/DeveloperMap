@@ -2,12 +2,11 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> } 
  */
-exports.seed = async function(knex) {
-  // Deletes ALL existing entries
-  await knex('personnel').del()
-  await knex('personnel').insert([
-    {id: 1, colName: 'rowValue1'},
-    {id: 2, colName: 'rowValue2'},
-    {id: 3, colName: 'rowValue3'}
-  ]);
+const personnelData = require('./personnel.json');
+
+exports.seed = function(knex) {
+  return knex('personnel').del()
+    .then(function () {
+      return knex('personnel').insert(personnelData);
+    });
 };

@@ -5,9 +5,9 @@
 exports.up = function (knex) {
     return knex.schema.createTable('unit', table => {
         table.increments('id').primary();
-        table.string('name').notNullable();
-        table.integer('personnel_id').unsigned().notNullable();
-        table.foreign('personnel_id').references('personnel.id');
+        table.string('unit').notNullable();
+        // table.integer('personnel_id').unsigned().notNullable();
+        // table.foreign('personnel_id').references('personnel.id');
     })
 };
 
