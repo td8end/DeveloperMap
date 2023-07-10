@@ -106,16 +106,18 @@ export default function User() {
         <div className='SearchField'>
            <div className='searchContainer'id="searchContainer>">
               <input className='searchInput' id="searchInput" type="text" name="search" 
-                  placeholder="Search For Coder..." onChange={()=>{setSearchText(document.getElementById("searchInput").value)}}></input>
+                  placeholder="Search For Coder or Base..." onChange={()=>{setSearchText(document.getElementById("searchInput").value)}}></input>
             </div>
-            <div className='searchContainer'id="searchContainer>">
+            {/* <div className='searchContainer'id="searchContainer>">
               <input className='searchInput' id="searchInput2" type="text" name="search" 
                   placeholder="Search For Base..." onChange={()=>{setSearchText(document.getElementById("searchInput2").value)}}></input>
-            </div>
+            </div> */}
         </div>
             {console.log(searchText)}
           <div className='groupContainer '>
              {markers.filter(marker=>marker.name.toLowerCase().startsWith(searchText) || marker.base.toLowerCase().startsWith(searchText)  )
+                          // {markers.filter(marker=>marker.name.toLowerCase().startsWith(searchText) || marker.base.toLowerCase().startsWith(searchText)  )
+
               .map(marker => (
                     // <div key={marker.id} className="characterTile" onClick={() => setDisplay(marker)}>
                     <div className='singleContainer' onClick={() => setCoord(marker.geocode)}>
