@@ -32,11 +32,11 @@ exports.seed = async function (knex) {
     "Naval Base San Diego",
     "Naval Station Great Lakes",
     "Naval Station Pearl Harbor",
-    "Marine Corps Base Camp Pendleton",
+
     "Marine Corps Base Quantico",
     "Marine Corps Recruit Depot Parris Island",
     "Marine Corps Air Station Miramar",
-    "Marine Corps Air Station Cherry Point",
+   
     "Hurlburt Field",
     "Eglin Air Force Base",
     "MacDill Air Force Base",

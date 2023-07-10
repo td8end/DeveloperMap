@@ -17,8 +17,12 @@ function App() {
   useEffect(() => {
     fetch('http://localhost:8081/personnel')
       .then((res) => res.json())
-      .then(data => setMarkers(data))
+      .then(data => {
+        setMarkers(data)
+      })
+      .catch(error=>console.log('this isnt working'))
   },[])
+
 console.log(markers)
 
   return (
