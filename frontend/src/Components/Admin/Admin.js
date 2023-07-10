@@ -1,95 +1,97 @@
 
 import { Link, Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom'
 import './Admin.css';
+import { AppContext } from '../../App';
 
-const markers = [
-  {
-    name: 'Fred',
-    base: 'Schriever',
-    geocode: [39.0997, -94.5786],
-    popUp: 'Hello i am marker 1',
-    authorized: 10,
-  },
-  {
-    name: 'Fred2',
-    base: 'Schriever',
-    geocode: [39.0997, -94.5786],
-    popUp: 'Hello i am marker 1',
-    authorized: 10,
-  },
-  {    
-    name: 'Fred8',
-    base: 'Vandenburg',
-    geocode: [39.0997, -94.5786],
-    popUp: 'Hello i am marker 1',
-    authorized: 10,
-  },
-  {
-    name: 'Fred8',
-    base: 'Vandenburg',
-    geocode: [39.0997, -94.5786],
-    popUp: 'Hello i am marker 1',
-    authorized: 10,
-  },
-  {
-    name: 'Fred8',
-    base: 'Vandenburg',
-    geocode: [39.0997, -94.5786],
-    popUp: 'Hello i am marker 1',
-    authorized: 10,
-  },
-  {
-    name: 'Fred6',
-    base: 'Vandenburg',
-    geocode: [39.0997, -94.5786],
-    popUp: 'Hello i am marker 1',
-    authorized: 10,
-  },
-  {
-    name: 'Fred7',
-    base: 'Peterson',
-    geocode: [39.0997, -94.5786],
-    popUp: 'Hello i am marker 1',
-    authorized: 10,
-  },
-  {
-    name: 'Fred8',
-    base: 'Buckley',
-    geocode: [39.0994, -94.40],
-    popUp: 'Hello i am marker 1',
-    authorized: 10,
-  },
-  {
-    name: 'Fred9',
-    base: 'Buckley',
-    geocode: [39.0994, -94.40],
-    popUp: 'Hello i am marker 1',
-    authorized: 10,
-  },
-  {
-    name: 'Fred10',
-    base: 'Buckley',
-    geocode: [31.0994, -94.40],
-    popUp: 'Hello i am marker 1',
-    authorized: 10,
-  },
-  {
-    name: 'Fred11',
-    base: 'Lackland',
-    geocode: [31.0994, -94.40],
-    popUp: 'Hello i am marker 1',
-    authorized: 10,
-  },
-  {
-    name: 'Fred12',
-    base: 'Lackland',
-    geocode: [31.0994, -94.40],
-    popUp: 'Hello i am marker 1',
-    authorized: 10,
-  },
-]
+
+// const markers = [
+//   {
+//     name: 'Fred',
+//     base: 'Schriever',
+//     geocode: [39.0997, -94.5786],
+//     popUp: 'Hello i am marker 1',
+//     authorized: 10,
+//   },
+//   {
+//     name: 'Fred2',
+//     base: 'Schriever',
+//     geocode: [39.0997, -94.5786],
+//     popUp: 'Hello i am marker 1',
+//     authorized: 10,
+//   },
+//   {    
+//     name: 'Fred8',
+//     base: 'Vandenburg',
+//     geocode: [39.0997, -94.5786],
+//     popUp: 'Hello i am marker 1',
+//     authorized: 10,
+//   },
+//   {
+//     name: 'Fred8',
+//     base: 'Vandenburg',
+//     geocode: [39.0997, -94.5786],
+//     popUp: 'Hello i am marker 1',
+//     authorized: 10,
+//   },
+//   {
+//     name: 'Fred8',
+//     base: 'Vandenburg',
+//     geocode: [39.0997, -94.5786],
+//     popUp: 'Hello i am marker 1',
+//     authorized: 10,
+//   },
+//   {
+//     name: 'Fred6',
+//     base: 'Vandenburg',
+//     geocode: [39.0997, -94.5786],
+//     popUp: 'Hello i am marker 1',
+//     authorized: 10,
+//   },
+//   {
+//     name: 'Fred7',
+//     base: 'Peterson',
+//     geocode: [39.0997, -94.5786],
+//     popUp: 'Hello i am marker 1',
+//     authorized: 10,
+//   },
+//   {
+//     name: 'Fred8',
+//     base: 'Buckley',
+//     geocode: [39.0994, -94.40],
+//     popUp: 'Hello i am marker 1',
+//     authorized: 10,
+//   },
+//   {
+//     name: 'Fred9',
+//     base: 'Buckley',
+//     geocode: [39.0994, -94.40],
+//     popUp: 'Hello i am marker 1',
+//     authorized: 10,
+//   },
+//   {
+//     name: 'Fred10',
+//     base: 'Buckley',
+//     geocode: [31.0994, -94.40],
+//     popUp: 'Hello i am marker 1',
+//     authorized: 10,
+//   },
+//   {
+//     name: 'Fred11',
+//     base: 'Lackland',
+//     geocode: [31.0994, -94.40],
+//     popUp: 'Hello i am marker 1',
+//     authorized: 10,
+//   },
+//   {
+//     name: 'Fred12',
+//     base: 'Lackland',
+//     geocode: [31.0994, -94.40],
+//     popUp: 'Hello i am marker 1',
+//     authorized: 10,
+//   },
+// ]
 
 function Admin() {
   const navigate = useNavigate();
@@ -97,6 +99,9 @@ function Admin() {
   const [ data, setData ] = useState([])
   const [ username, setName ] = useState('')
   const [ userbase, setBase ] = useState('')
+
+  const markers = useContext(AppContext)
+
 
   const handleSubmit = (e) => {
     // e.preventDefault();
@@ -120,10 +125,11 @@ function Admin() {
           <div className='AdminLeft'>
             <div className='AdminsearchContainer'id="searchContainer>">
                 <input className='AdminsearchInput' id="searchInput" type="text" name="search" 
-                    placeholder="Search For Coder or Base..." onChange={()=>{setSearchText(document.getElementById("searchInput").value)}}></input>
+                    placeholder="Search For Coder..." onChange={()=>{setSearchText(document.getElementById("searchInput").value)}}></input>
             </div>
             <div className='AdmingroupContainer '>
-              {markers.filter(marker=>marker.name.toLowerCase().startsWith(searchText) || marker.base.toLowerCase().startsWith(searchText)  )
+              {/* {markers.filter(marker=>marker.name.toLowerCase().startsWith(searchText) || marker.base.toLowerCase().startsWith(searchText)  ) */}
+              {markers.filter(marker=>marker.name.toLowerCase().startsWith(searchText))
 
                 .map(marker => (
                       <div className='AdminsingleContainer' onClick={() => AllData(marker)}>

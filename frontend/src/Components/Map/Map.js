@@ -1,12 +1,16 @@
 
 import './Map.css';
+import { useContext } from 'react';
 import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import {Icon, divIcon} from "leaflet";
 import styled from 'styled-components';
+// import { AppContext } from '../../App';
+
 
 export default function Map() {
+  // const markers = useContext(AppContext)
 
 
   const StyledPop = styled(Popup)`

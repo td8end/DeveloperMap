@@ -8,6 +8,7 @@ import Admin from './Components/Admin/Admin';
 import { useNavigate } from 'react-router-dom'
 import './App.css';
 
+export const AppContext = createContext()
 
 function App() {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ function App() {
       .catch(error=>console.log('this isnt working'))
   },[])
 
-console.log(markers)
+// console.log(markers)
 
   return (
     <>
@@ -33,12 +34,14 @@ console.log(markers)
       </div>
 
       {/* this is the breadcromb bar */}
-      <Routes>
-          <Route path="/" element={<Login/>}/>
-          <Route path="/user" element={<User/>}/>
-          <Route path="/admin" element={<Admin/>}/>
+      <AppContext.Provider value={markers}>
+        <Routes>
+            <Route path="/" element={<Login/>}/>
+            <Route path="/user" element={<User/>}/>
+            <Route path="/admin" element={<Admin/>}/>
+        </Routes>
+      </AppContext.Provider>
 
-      </Routes>
     </>
   );
 }
