@@ -1,5 +1,6 @@
 .userContainer {
     background-color: blue;
+
 }
 
 
@@ -46,12 +47,12 @@ tr:hover {background-color: lightgrey;}
     margin: 4px;
     font-size: small;
     text-align: start;
-
 }
 
 .SearchField {
     display: flex;
     justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(0, 0, 255, 0.5), rgba(0, 0, 0, 0.9));
 }
 
 .searchContainer {
@@ -61,4 +62,75 @@ tr:hover {background-color: lightgrey;}
 .searchInput {
     height: 25px;
     width: 300px;
+}
+/* Tablet */
+@media only screen and (min-width: 768px) and (max-width: 1280px) {
+
+    .userContainer {
+        background-color: blue;
+    
+    }
+    
+    
+    table, th, td {
+    border: 1px solid;
+    }
+    
+    tr:hover {background-color: lightgrey;}
+    
+    .groupContainer {
+        display: flex;
+        width: 100%;
+        overflow-x: scroll;
+        background-color: lightgrey;
+        border: 2px solid black;
+    }
+    .singleContainer {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        background-color: white;
+        color: black;
+        margin: 10px;
+        height: 300px;
+        min-width: 200px;
+    }
+    
+    .singleContainer:hover {
+        cursor: pointer;
+        box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.5);
+    }
+    
+    .nameStyle {
+        background-color: blue;
+        color: white;
+        text-align: center;
+        width: 100%; 
+        height: 25px;
+        padding: 2%;
+        margin:0;
+    
+    }
+    .pstyle{
+        margin: 4px;
+        font-size: small;
+        text-align: start;
+    }
+    
+    .SearchField {
+        display: flex;
+        justify-content: space-between;
+        background: linear-gradient(to bottom, rgba(0, 0, 255, 0.5), rgba(0, 0, 0, 0.9));
+        padding: 2%;
+    }
+    
+    .searchContainer {
+        margin: 1%;
+    }
+    
+    .searchInput {
+        height: 90%;
+        width: 120%;
+    }
+
 }
