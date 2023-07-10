@@ -11,7 +11,7 @@ module.exports = {
       database: 'devmap',
       user: 'postgres',
       password: 'docker',
-      port: 5432,
+      port: 5433,                   //I changed this from 5432 to 5433 to avoid a port conflict on my local machine.  
       host: '127.0.0.1'
     }
   },
