@@ -139,7 +139,7 @@
 .FormDetails {
     display: flex;
     flex-direction: column;
-    padding-left: 20%;
+    padding-left: 5%;
     height: 100%;
     overflow-x: scroll;
 
