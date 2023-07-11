@@ -52,7 +52,7 @@ exports.seed = async function (knex) {
     "United States Naval Academy",
     "United States Air Force Academy",
     "United States Coast Guard Academy",
-    "United States Space Force Academy"]
+   ]
   // Deletes ALL existing entries
   const installations = installations_array.map((installation, i) => ({ id: i + 1, installation: installation.replace(/\s/g, '_').toLowerCase() }));
   await knex.schema.raw('TRUNCATE installation CASCADE')

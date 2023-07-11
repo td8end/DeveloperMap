@@ -2,7 +2,8 @@ import fs from 'fs';
 import { faker } from '@faker-js/faker';
 let branch_id = 0; 
 let unit_id = 0;
-let installation_id = 0;
+//let installation_id = 0;
+let rank = null;
 //const branches = ["USMC", "Army", "Navy", "Air Force", "Space Force"];
 const locations = [[32.370377, -102.523255],
 [36.895911, -76.208521],
@@ -53,10 +54,10 @@ const locations = [[32.370377, -102.523255],
 const clearances = ['Top Secret', 'Secret', 'Confidential']
 //const dod_units = require('./03_unit.js');
 //let unitCount = dod_units.length 
-const ranks = [
+const armyRanks = [
     "Private", 
     "Private First Class", 
-    "Lance Corporal", 
+    "Specialist",
     "Corporal",
     "Sergeant",
     "Staff Sergeant",
@@ -69,7 +70,10 @@ const ranks = [
     "Captain",
     "Major",
     "Lieutenant Colonel",
-    "Colonel",
+    "Colonel"
+  ];
+  
+  const navyRanks = [
     "Seaman Recruit",
     "Seaman Apprentice",
     "Seaman",
@@ -84,8 +88,10 @@ const ranks = [
     "Lieutenant",
     "Lieutenant Commander",
     "Commander",
-    "Captain",
-    "Specialist",
+    "Captain"
+  ];
+  
+  const airForceRanks = [
     "Airman Basic",
     "Airman",
     "Airman First Class",
@@ -104,34 +110,80 @@ const ranks = [
     "Major",
     "Lieutenant Colonel",
     "Colonel"
+  ];
   
-];
+  const marineRanks = [
+    "Private", 
+    "Private First Class", 
+    "Lance Corporal", 
+    "Corporal",
+    "Sergeant",
+    "Staff Sergeant",
+    "Gunnery Sergeant",
+    "Master Sergeant",
+    "First Sergeant",
+    "Master Gunnery Sergeant",
+    "Sergeant Major",
+    "Second Lieutenant",
+    "First Lieutenant",
+    "Captain",
+    "Major",
+    "Lieutenant Colonel",
+    "Colonel"
+  ];
+  
   
 let personnel = [];
 
 for (let i = 0; i < 100; i++) {
-  installation_id  = Math.floor(Math.random() * locations.length)+1
-  unit_id = Math.floor(Math.random() * 13) + 1
+  let installation_id  = Math.floor(Math.random() * locations.length)+1
+  unit_id = Math.floor(Math.random() * 40) + 1
   branch_id = Math.floor(Math.random() * 5) + 1
   let coord = locations[installation_id -1];
   let lat = coord[0] + Math.random() / 1000 - 0.0005;
   let lon = coord[1] + Math.random() / 1000 - 0.0005;
   let location = [parseFloat(lat.toFixed(3)), parseFloat(lon.toFixed(3))]
   let isCivilian = faker.datatype.boolean();
-
+  if (isCivilian === true){
+    let gs = Math.floor(Math.random() * 13) + 1
+    rank = `GS-${gs}`
+  }else {
+    switch(branch_id) {
+        case 1: 
+          rank = faker.helpers.arrayElement(armyRanks);
+          break;
+        case 2: 
+          rank = faker.helpers.arrayElement(navyRanks);
+          break;
+        case 3: 
+          rank = faker.helpers.arrayElement(marineRanks);
+          break;
+        case 4: 
+          rank = faker.helpers.arrayElement(airForceRanks);
+          break;
+        case 5: 
+          rank = faker.helpers.arrayElement(airForceRanks); 
+          break;
+        case 6: 
+          rank = faker.helpers.arrayElement(navyRanks);
+          break;
+        default:
+          rank = null;
+    }
+  }
     personnel.push({
         id: i + 1,
         name: `${faker.person.firstName()} ${faker.person.lastName()}`,
         clearance: faker.helpers.arrayElement(clearances),
         has_skill_identifier: faker.datatype.boolean(),
         arrived_on_station: faker.date.past().toISOString().split('T')[0],
-        is_civilian: faker.datatype.boolean(),
-        rank: faker.helpers.arrayElement(ranks),
+        is_civilian: isCivilian,
+        rank: rank,
         email: faker.internet.email(),
         geocode: location,
-        branch_id: ` ${branch_id}`, 
-        unit_id:` ${unit_id}`, 
-        installation_id: `${installation_id}`,
+        branch_id: branch_id, 
+        unit_id: unit_id, 
+        installation_id: installation_id,
         photo: faker.image.avatar(),
     });
 }
