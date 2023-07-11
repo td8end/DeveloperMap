@@ -112,7 +112,7 @@ function Admin() {
 
   const handleSubmit = (e) => {
     // e.preventDefault();
-    const AdminUpdate = { username, userbase};
+    const AdminUpdate = { username, userBase};
     console.log(AdminUpdate);
   }
 
@@ -124,7 +124,7 @@ function Admin() {
     setArrivedOnStation(markers.arrived_on_station)
     setBase(markers.installation_id)
     setCoder(markers.has_skill_identifier)
-    setCivilian(markers.is_civilian)
+    setUserCivilian(markers.is_civilian)
     setRank(markers.rank)
     setEmail(markers.email)
 
@@ -173,7 +173,7 @@ function Admin() {
                             <label> Base </label> 
                             <input
                               type='text'
-                              value={userbase}
+                              value={userBase}
                               onChange={(e) => setBase(e.target.value)}
                               />
                       </form>
