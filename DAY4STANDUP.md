@@ -17,14 +17,15 @@ git fetch origin
 git checkout dev
 ```
 **branching properly** 
-creating a branch locally
-```
-git checkout -b frontend  
-```
 if making a new branch for the first time
 ```
 git checkout -b backend  
 git push -u origin backend
+```
+if the branch exists
+```
+git fetch origin
+git checkout dev/backend
 ```
 do commits while working
 ```
