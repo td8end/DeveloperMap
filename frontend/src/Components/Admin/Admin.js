@@ -6,93 +6,6 @@ import './Admin.css';
 import { AppContext } from '../../App';
 
 
-// const markers = [
-//   {
-//     name: 'Fred',
-//     base: 'Schriever',
-//     geocode: [39.0997, -94.5786],
-//     popUp: 'Hello i am marker 1',
-//     authorized: 10,
-//   },
-//   {
-//     name: 'Fred2',
-//     base: 'Schriever',
-//     geocode: [39.0997, -94.5786],
-//     popUp: 'Hello i am marker 1',
-//     authorized: 10,
-//   },
-//   {    
-//     name: 'Fred8',
-//     base: 'Vandenburg',
-//     geocode: [39.0997, -94.5786],
-//     popUp: 'Hello i am marker 1',
-//     authorized: 10,
-//   },
-//   {
-//     name: 'Fred8',
-//     base: 'Vandenburg',
-//     geocode: [39.0997, -94.5786],
-//     popUp: 'Hello i am marker 1',
-//     authorized: 10,
-//   },
-//   {
-//     name: 'Fred8',
-//     base: 'Vandenburg',
-//     geocode: [39.0997, -94.5786],
-//     popUp: 'Hello i am marker 1',
-//     authorized: 10,
-//   },
-//   {
-//     name: 'Fred6',
-//     base: 'Vandenburg',
-//     geocode: [39.0997, -94.5786],
-//     popUp: 'Hello i am marker 1',
-//     authorized: 10,
-//   },
-//   {
-//     name: 'Fred7',
-//     base: 'Peterson',
-//     geocode: [39.0997, -94.5786],
-//     popUp: 'Hello i am marker 1',
-//     authorized: 10,
-//   },
-//   {
-//     name: 'Fred8',
-//     base: 'Buckley',
-//     geocode: [39.0994, -94.40],
-//     popUp: 'Hello i am marker 1',
-//     authorized: 10,
-//   },
-//   {
-//     name: 'Fred9',
-//     base: 'Buckley',
-//     geocode: [39.0994, -94.40],
-//     popUp: 'Hello i am marker 1',
-//     authorized: 10,
-//   },
-//   {
-//     name: 'Fred10',
-//     base: 'Buckley',
-//     geocode: [31.0994, -94.40],
-//     popUp: 'Hello i am marker 1',
-//     authorized: 10,
-//   },
-//   {
-//     name: 'Fred11',
-//     base: 'Lackland',
-//     geocode: [31.0994, -94.40],
-//     popUp: 'Hello i am marker 1',
-//     authorized: 10,
-//   },
-//   {
-//     name: 'Fred12',
-//     base: 'Lackland',
-//     geocode: [31.0994, -94.40],
-//     popUp: 'Hello i am marker 1',
-//     authorized: 10,
-//   },
-// ]
-
 function Admin() {
   const navigate = useNavigate();
   const [ searchText, setSearchText ] = useState("")
@@ -147,11 +60,16 @@ function Admin() {
 
                 .map(marker => (
                       <div className='AdminsingleContainer' onClick={() => AllData(marker)}>
-                        <h3 className='nameStyle'>{marker.name}</h3>
-                        <p className='Adminpstyle'>Location: {marker.geocode}</p>
-                        <p className='Adminpstyle'>Detials: {marker.popUp}</p>
-                        <p className='Adminpstyle'>Authorized: {marker.authorized}</p>
-                        <p className='Adminpstyle'>Base: {marker.base}</p>
+                      <h3 className='nameStyle'>{marker.name}</h3>
+                      <img src= {marker.photo} alt='img' width="90" height="90"/>
+                      <p className='Adminpstyle'>Location: {marker.geocode}</p>
+                      <p className='Adminpstyle'>Clearance: {marker.clearance}</p>
+                      <p className='Adminpstyle'>arrived_on_station: {marker.arrived_on_station}</p>
+                      <p className='Adminpstyle'>Base: {marker.installation_id}</p>
+                      <p className='Adminpstyle'>Coder?: {markers.has_skill_identifier ? true : false}</p>
+                      <p className='Adminpstyle'>Civilian?: {marker.is_civilian}</p>
+                      <p className='Adminpstyle'>Rank: {marker.rank}</p>
+                      <p className='Adminpstyle'>Email: {marker.email}</p>
                       </div>
                       ))}
               </div>
@@ -163,18 +81,60 @@ function Admin() {
                   <div className='FormDetails'>
 
                       <form id='myForm' onSubmit = {handleSubmit}>
-                            <label> Name </label> 
+                            <label> Name:  </label> 
                             <input
                               type='text'
                               value={ username }
                               onChange={(e) => setName(e.target.value)}
                               />
 
-                            <label> Base </label> 
+                            <label> Location: </label> 
                             <input
                               type='text'
-                              value={userBase}
-                              onChange={(e) => setBase(e.target.value)}
+                              value={userGeocode}
+                              onChange={(e) => setGeocode(e.target.value)}
+                              />
+
+                            <label> Clearance: </label> 
+                            <input
+                              type='text'
+                              value={ userClearance }
+                              onChange={(e) => setClearance(e.target.value)}
+                              />
+
+                            <label> Arrived On Station: </label> 
+                            <input
+                              type='text'
+                              value={userArrivedOnStation}
+                              onChange={(e) => setArrivedOnStation(e.target.value)}
+                              />
+
+                             <label> Coder? :  </label> 
+                            <input
+                              type='text'
+                              value={ userCoder }
+                              onChange={(e) => setCoder(e.target.value)}
+                              />
+
+                            <label> Civilian? : </label> 
+                            <input
+                              type='text'
+                              value={userCivilian}
+                              onChange={(e) => setUserCivilian(e.target.value)}
+                              />
+
+                            <label> Rank: </label> 
+                            <input
+                              type='text'
+                              value={ userRank }
+                              onChange={(e) => setRank(e.target.value)}
+                              />
+
+                            <label> Email </label> 
+                            <input
+                              type='text'
+                              value={userEmail}
+                              onChange={(e) => setEmail(e.target.value)}
                               />
                       </form>
                             
