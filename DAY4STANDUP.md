@@ -17,14 +17,25 @@ git fetch origin
 git checkout dev
 ```
 **It may not make sense to branch today, I recognise that; but I wanted to learn how to do this properly** 
+creating a branch locally
 ```
 git checkout -b frontend  
+```
+if making a new branch for the first time
+```
 git checkout -b backend  
+git push -u origin backend
 ```
 do commits while working
 ```
 git add -A
 git commit -m
+```
+if working on both branches, to switch between
+```
+git add -A
+git commit -m "saving backend work"
+git checkout frontend
 ```
 merge safely
 * frontend
