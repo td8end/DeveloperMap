@@ -1,10 +1,6 @@
 import fs from 'fs';
 import { faker } from '@faker-js/faker';
-let branch_id = 0; 
-let unit_id = 0;
-//let installation_id = 0;
-let rank = null;
-//const branches = ["USMC", "Army", "Navy", "Air Force", "Space Force"];
+let cliArg = process.argv[2];
 const locations = [[32.370377, -102.523255],
 [36.895911, -76.208521],
 [39.4, -123.81667],
@@ -51,10 +47,8 @@ const locations = [[32.370377, -102.523255],
 [41.262939, -78.529883],
 [29.43746, -97.52888],
 [41.262939, -78.529883]];
-const clearances = ['Top Secret', 'Secret', 'Confidential']
-//const dod_units = require('./03_unit.js');
-//let unitCount = dod_units.length 
-const armyRanks = [
+let clearances = ['Top Secret', 'Secret', 'Confidential']
+let armyRanks = [
     "Private", 
     "Private First Class", 
     "Specialist",
@@ -73,7 +67,7 @@ const armyRanks = [
     "Colonel"
   ];
   
-  const navyRanks = [
+  let navyRanks = [
     "Seaman Recruit",
     "Seaman Apprentice",
     "Seaman",
@@ -91,7 +85,7 @@ const armyRanks = [
     "Captain"
   ];
   
-  const airForceRanks = [
+  let airForceRanks = [
     "Airman Basic",
     "Airman",
     "Airman First Class",
@@ -112,7 +106,7 @@ const armyRanks = [
     "Colonel"
   ];
   
-  const marineRanks = [
+  let marineRanks = [
     "Private", 
     "Private First Class", 
     "Lance Corporal", 
@@ -135,51 +129,64 @@ const armyRanks = [
   
 let personnel = [];
 
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < cliArg; i++) {
   let installation_id  = Math.floor(Math.random() * locations.length)+1
-  unit_id = Math.floor(Math.random() * 40) + 1
-  branch_id = Math.floor(Math.random() * 5) + 1
+  let unit_id = Math.floor(Math.random() * 40) + 1
+  let branch_id = Math.floor(Math.random() * 5) + 1
   let coord = locations[installation_id -1];
   let lat = coord[0] + Math.random() / 1000 - 0.0005;
   let lon = coord[1] + Math.random() / 1000 - 0.0005;
   let location = [parseFloat(lat.toFixed(3)), parseFloat(lon.toFixed(3))]
   let isCivilian = faker.datatype.boolean();
+  let rank = null;
+  let EmailfirstName = faker.person.firstName();
+  let EmaillastName = faker.person.lastName();
+  let emailProviders = null;
   if (isCivilian === true){
     let gs = Math.floor(Math.random() * 13) + 1
     rank = `GS-${gs}`
+    emailProviders = ['gmail.com', 'yahoo.com', 'hotmail.com', 'army.mil', 'socom.mil', 'navy.mil', 'usmc.mil', 'us.af.mil', 'ussf.mil', 'uscg.mil']
   }else {
     switch(branch_id) {
         case 1: 
           rank = faker.helpers.arrayElement(armyRanks);
+          emailProviders = ['gmail.com', 'yahoo.com', 'hotmail.com', 'army.mil', 'socom.mil']
           break;
         case 2: 
           rank = faker.helpers.arrayElement(navyRanks);
+          emailProviders = ['gmail.com', 'yahoo.com', 'hotmail.com', 'navy.mil', 'socom.mil']
           break;
         case 3: 
           rank = faker.helpers.arrayElement(marineRanks);
+          emailProviders = ['gmail.com', 'yahoo.com', 'hotmail.com', 'usmc.mil', 'socom.mil']
           break;
         case 4: 
           rank = faker.helpers.arrayElement(airForceRanks);
+          emailProviders = ['gmail.com', 'yahoo.com', 'hotmail.com', 'us.af.mil', 'socom.mil']
           break;
         case 5: 
           rank = faker.helpers.arrayElement(airForceRanks); 
+          emailProviders = ['gmail.com', 'yahoo.com', 'hotmail.com', 'ussf.mil', 'socom.mil']
           break;
         case 6: 
           rank = faker.helpers.arrayElement(navyRanks);
+          emailProviders = ['gmail.com', 'yahoo.com', 'hotmail.com', 'uscg.mil', 'socom.mil']
           break;
         default:
           rank = null;
+        }
     }
-  }
+  let emailProvider = faker.helpers.arrayElement(emailProviders)
+  let email = faker.internet.email({firstName: EmailfirstName, lastName: EmaillastName, provider: emailProvider })
     personnel.push({
         id: i + 1,
-        name: `${faker.person.firstName()} ${faker.person.lastName()}`,
+        name: `${EmailfirstName} ${EmaillastName}`,
         clearance: faker.helpers.arrayElement(clearances),
         has_skill_identifier: faker.datatype.boolean(),
         arrived_on_station: faker.date.past().toISOString().split('T')[0],
         is_civilian: isCivilian,
         rank: rank,
-        email: faker.internet.email(),
+        email: email,
         geocode: location,
         branch_id: branch_id, 
         unit_id: unit_id, 
