@@ -19,13 +19,18 @@ function Admin() {
   const [ userCivilian, setUserCivilian ] = useState('')
   const [ userRank, setRank ] = useState('')
   const [ userEmail, setEmail ] = useState('')
+  const userMos = null
+  const MGRS = null
+  const BranchID = null
+  const UnitID = null
+  const userPhoto = "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/336.jpg"
 
   const markers = useContext(AppContext)
 
 
   const handleSubmit = (e) => {
     // e.preventDefault();
-    const AdminUpdate = { username, userBase};
+    const AdminUpdate = { username, userClearance, userCoder,userArrivedOnStation, userCivilian, userMos, userRank, userEmail, userGeocode, MGRS, BranchID, UnitID, userBase, userPhoto};
     console.log(AdminUpdate);
   }
 
@@ -66,8 +71,8 @@ function Admin() {
                       <p className='Adminpstyle'>Clearance: {marker.clearance}</p>
                       <p className='Adminpstyle'>arrived_on_station: {marker.arrived_on_station}</p>
                       <p className='Adminpstyle'>Base: {marker.installation_id}</p>
-                      <p className='Adminpstyle'>Coder?: {markers.has_skill_identifier ? true : false}</p>
-                      <p className='Adminpstyle'>Civilian?: {marker.is_civilian}</p>
+                      <p className='Adminpstyle'>Coder?: {marker.has_skill_identifier.toString()}</p>
+                      <p className='Adminpstyle'>Civilian?: {marker.is_civilian.toString()}</p>
                       <p className='Adminpstyle'>Rank: {marker.rank}</p>
                       <p className='Adminpstyle'>Email: {marker.email}</p>
                       </div>

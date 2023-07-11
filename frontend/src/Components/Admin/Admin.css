@@ -1,18 +1,16 @@
 .AdminPage {
     display: flex;
-}
-
-
-.AdminStyle{
+  }
+  
+  .AdminStyle {
     display: flex;
     justify-content: start;
     text-align: center;
     margin: 0;
-    /* background-color: black; */
     background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
-}
-
-.UserView {
+  }
+  
+  .UserView {
     width: 10vw;
     height: 2vw;
     margin-left: auto;
@@ -26,26 +24,9 @@
     margin-left: 2vw;
     display: inline-block;
     padding-top: 0.5vw;
-}
-
-/* .UserView {
-    text-align: center;
-    width: 8vw;
-    color: white;
-    background-color: grey;
-    font-size: 1vw;
-    height: 3vw;
-    margin-left: 2vw;
-    cursor: pointer;
-    align-items: center;
-} */
-
-/* .AdminSearchField {
-    margin-left: 2vw;
-    width: 30vw;
-} */
-
-.AdmingroupContainer {
+  }
+  
+  .AdmingroupContainer {
     margin-left: 2vw;
     display: flex;
     flex-direction: column;
@@ -53,9 +34,9 @@
     overflow-x: scroll;
     background-color: lightgrey;
     height: 75%;
-}
-
-.AdminsingleContainer {
+  }
+  
+  .AdminsingleContainer {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -63,108 +44,176 @@
     color: black;
     margin: 10px;
     min-width: 200px;
-}
-
-.AdminsingleContainer:hover {
+  }
+  
+  .AdminsingleContainer:hover {
     cursor: pointer;
-    box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.5);
-}
-
-.AdminsearchInput{
+    box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.5);
+  }
+  
+  .AdminsearchInput {
     font-size: medium;
     width: 25vw;
     height: 2vw;
     margin: 2vw;
-}
-
-
-.Adminpstyle{
+  }
+  
+  .Adminpstyle {
     margin: 4px;
     font-size: small;
     text-align: start;
-}
-.AdminWhole {
+  }
+  
+  .AdminWhole {
     display: flex;
     flex-direction: row;
     max-height: 70vh;
     overflow: hidden;
-}
-
-
-.AdminLeft{
+  }
+  
+  .AdminLeft {
     display: flex;
     width: 30vw;
+    height: 5vh;
     margin-left: 2vw;
-    display: flex;
     flex-direction: column;
-    /* overflow-x: scroll; */
-
-}
-
-.FormInput{
+  }
+  
+  .FormInput {
     background-color: lightgrey;
     width: 60vw;
-    margin: 2vw;
     height: 50%;
-
-}
-
-
-.FormHeader {
+    margin-top: 1%;
+    border-radius: 0.4vw;
+  }
+  
+  .FormHeader {
     width: auto;
-    height: 8vw;
+    height: 6vw;
     display: flex;
     background-color: blue;
     padding-left: 1%;
     color: white;
+    border-top-left-radius: 0.4vw;
+    border-top-right-radius: 0.4vw;
   }
-
-/* .FormHeader {
-    display: flex;
-    justify-content: space-between;
-    background-color: blue;
-    margin-bottom: 40%;
-}
-
-.FormHeader {
-    padding-left: 10px;
-    color: white;
-} */
-
-.ClearBtn{
+  
+  .ClearBtn {
     margin: 25px 10px 0px 0px;
     height: 30px;
-}
-
-.FormDetails {
-    display: flex;
-    flex-direction: column;
+  }
+  
+  .FormDetails {
+    flex: 1;
+    overflow-y: auto;
+    padding-top: 1%;
     padding-left: 5%;
-    height: 100%;
-    overflow-x: scroll;
-    justify-content: space-between;
-    /* padding-top: 1%; */
-    position: relative;
-    overflow-y: scroll;
-}
-
-#myForm {
+    border-bottom-left-radius: 0.4vw;
+    border-bottom-right-radius: 0.4vw;
+  }
+  
+  #myForm {
     display: flex;
     flex-direction: column;
     margin-bottom: 30%;
     padding-right: 1%;
+    border-bottom-left-radius: 0.4vw;
+    border-bottom-right-radius: 0.4vw;
+  }
+  
+  input {
+    width: 25vw;
+  }
+  
+  .Footer {
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    position: sticky;
+    bottom: 0;
+    background-color: lightgrey;
+    padding: 1% 2%;
+    border-bottom-left-radius: 0.4vw;
+    border-bottom-right-radius: 0.4vw;
+  }
+
+.UpdateBtn {
+    background-color: rgb(22, 97, 218);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1vw;
 }
 
-.Footer {
-    display: flex;
-    justify-content: space-around;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    position: relative;
-    /* margin-top: 3%; */
-    /* margin-bottom: 3%; */
+.UpdateBtn:hover {
+    background-color:rgb(35, 203, 197);
+    transition: 0.3s;
+    opacity: 1;
 }
-/* 
-display: flex;
-width: 100%;
-overflow-x: scroll; */
+
+.AddBtn {
+    background-color: rgb(32, 218, 22);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1vw;
+}
+
+.AddBtn:hover {
+    background-color: rgb(148, 222, 20);
+    transition: 0.3s;
+    opacity: 1;
+}
+ 
+.DeleteBtn {
+    background-color: rgb(218, 22, 22);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1vw;
+}
+
+.DeleteBtn:hover {
+    background-color: rgb(222, 114, 20);
+    transition: 0.3s;
+    opacity: 1;
+}
+/* Tablets */
+@media screen and (max-width: 1024px) {
+    .AdminLeft,
+    .AdmingroupContainer,
+    .FormInput,
+    .FormDetails,
+    #myForm,
+    input {
+      width: 100%;
+    }
+  
+    .AdminWhole {
+      flex-direction: column;
+    }
+  
+    .AdminStyle {
+      justify-content: center;
+    }
+  }
+  
+  /*smartphones */
+  @media screen and (max-width: 600px) {
+    .AdminLeft,
+    .AdmingroupContainer,
+    .FormInput,
+    .FormDetails,
+    #myForm,
+    input {
+      width: 100%;
+    }
+  
+    .AdminWhole {
+      flex-direction: column;
+    }
+  
+    .AdminStyle {
+      justify-content: center;
+    }
+  }

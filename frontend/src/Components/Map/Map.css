@@ -16,7 +16,7 @@
 .leaflet-container {
   height: 50vh;
   /* border-top: 5px solid blue; */
-  background-image: linear-gradient(to bottom, rgba(0, 0, 255, 0.5), rgba(0, 0, 0, 0.9));
+  background: linear-gradient(to bottom, rgba(0, 0, 255, 0.5), rgba(0, 0, 0, 0.9));
 
 }
 
@@ -33,3 +33,18 @@
   font-weight: 900;
   font-size: 1.5rem;
 }
+
+
+.popupView {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  margin: 0;
+  background-color: lightgrey;
+  font-size: small;
+}
+/* .pPop {
+  padding: 0px;
+  margin: 0px;
+} */
