@@ -10,28 +10,48 @@ function Admin() {
   const navigate = useNavigate();
   const [ searchText, setSearchText ] = useState("")
   const [ data, setData ] = useState([])
-  const [ username, setName ] = useState('')
-  const [ userGeocode, setGeocode ] = useState('')
-  const [ userClearance, setClearance ] = useState('')
-  const [ userArrivedOnStation, setArrivedOnStation ] = useState('')
-  const [ userBase, setBase ] = useState('')
-  const [ userCoder, setCoder ] = useState('')
-  const [ userCivilian, setUserCivilian ] = useState('')
-  const [ userRank, setRank ] = useState('')
-  const [ userEmail, setEmail ] = useState('')
-  const userMos = null
-  const MGRS = null
-  const BranchID = null
-  const UnitID = null
-  const userPhoto = "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/336.jpg"
+  
+  const [ name, setName ] = useState('')
+  const [ geocode, setGeocode ] = useState('')
+  const [ clearance, setClearance ] = useState('')
+  const [ arrived_on_station, setArrivedOnStation ] = useState('')
+  const [ installation_id, setBase ] = useState('')
+  const [ has_skill_identifier, setCoder ] = useState('')
+  const [ is_civilian, setUserCivilian ] = useState('')
+  const [ rank, setRank ] = useState('')
+  const [ email, setEmail ] = useState('')
+  const mos = null
+  const mgrs = null
+  const branch_id = null
+  const unit_id = null
+  const photo = "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/336.jpg"
 
   const markers = useContext(AppContext)
 
 
   const handleSubmit = (e) => {
     // e.preventDefault();
-    const AdminUpdate = { username, userClearance, userCoder,userArrivedOnStation, userCivilian, userMos, userRank, userEmail, userGeocode, MGRS, BranchID, UnitID, userBase, userPhoto};
+    const AdminUpdate = { name, clearance, has_skill_identifier, arrived_on_station, is_civilian, mos, rank, email, geocode, mgrs, branch_id, unit_id, installation_id, photo};
     console.log(AdminUpdate);
+    fetch('http://localhost:8081/test', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({data:AdminUpdate})
+    })
+    .then(response => response.json()
+    ).then(function (data) {
+      console.log(data);
+    });
+    // };
+    
+ 
+    // Patch('http://localhost:8081/personnel', {
+    //   AdminUpdate
+    // })
+    // .then(res => console.log(response.data))
+    // .catch(error=>console.error(err))
   }
 
   const AllData = (markers) => {
@@ -89,56 +109,56 @@ function Admin() {
                             <label> Name:  </label> 
                             <input
                               type='text'
-                              value={ username }
+                              value={ name }
                               onChange={(e) => setName(e.target.value)}
                               />
 
                             <label> Location: </label> 
                             <input
                               type='text'
-                              value={userGeocode}
+                              value={geocode}
                               onChange={(e) => setGeocode(e.target.value)}
                               />
 
                             <label> Clearance: </label> 
                             <input
                               type='text'
-                              value={ userClearance }
+                              value={ clearance }
                               onChange={(e) => setClearance(e.target.value)}
                               />
 
                             <label> Arrived On Station: </label> 
                             <input
                               type='text'
-                              value={userArrivedOnStation}
+                              value={arrived_on_station}
                               onChange={(e) => setArrivedOnStation(e.target.value)}
                               />
 
                              <label> Coder? :  </label> 
                             <input
                               type='text'
-                              value={ userCoder }
+                              value={has_skill_identifier}
                               onChange={(e) => setCoder(e.target.value)}
                               />
 
                             <label> Civilian? : </label> 
                             <input
                               type='text'
-                              value={userCivilian}
+                              value={is_civilian}
                               onChange={(e) => setUserCivilian(e.target.value)}
                               />
 
                             <label> Rank: </label> 
                             <input
                               type='text'
-                              value={ userRank }
+                              value={ rank }
                               onChange={(e) => setRank(e.target.value)}
                               />
 
                             <label> Email </label> 
                             <input
                               type='text'
-                              value={userEmail}
+                              value={email}
                               onChange={(e) => setEmail(e.target.value)}
                               />
                       </form>

@@ -13,6 +13,8 @@ export default function User() {
   const [searchText, setSearchText] = useState("")
   const [searchText2, setSearchText2] = useState("")
 
+  const [civilian,setCivilian] = useState('')
+
   const markers = useContext(AppContext)
 
 
@@ -23,23 +25,29 @@ export default function User() {
 
   const [coder, setCoder] = useState(getInitialState);
 
-    const handleChangeCoder = (checked) => {
-      setCoder(String(checked));
-      console.log(coder)
-    };
-  
-const ChangeView = (marker) => {
-    setCoord(marker.geocode)
-    setZoom(40)
-}
+  const handleChangeCoder = (checked) => {
+    setCoder(String(checked));
+  };
 
-console.log(coord)
+  const ChangeView = (marker) => {
+    setZoom(20)
+    setCoord(marker.geocode)
+  }
+
+  // useEffect(() => {
+  //   fetch('http://localhost:8081/personnel/')
+  //     .then((res) => res.json())
+  //     .then(data => {
+  //       setBranch(data)
+  //     })
+  //     .catch(error=>console.log('this isnt working'))
+  // },[])
 
 
   return (
     <>
       <div className='userContainer'>
-        <Map coord={coord} zoom={zoom}/>
+        <Map coord={coord} zoom={zoom} />
       </div>
       <div >
         <div className='SearchField'>
@@ -48,10 +56,10 @@ console.log(coord)
               placeholder="Search For Coder..." onChange={() => { setSearchText(document.getElementById("searchInput").value) }}></input>
           </div>
           <label>
-            <span>Is coder?</span>
+            <span id="Switch">Is coder?</span>
             <Switch onChange={handleChangeCoder} checked={coder === "true"} />
           </label>
-                    
+
           {/* <label>
             <input onChange={handleChangeCoder} type="checkbox" value="true" name="coder" />
           </label> */}
@@ -66,7 +74,7 @@ console.log(coord)
           </select> */}
 
         </div>
-        {console.log(searchText)}
+        {/* {console.log(searchText)} */}
         <div className='groupContainer '>
           {
             coder === 'true' ?

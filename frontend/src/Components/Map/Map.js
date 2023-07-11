@@ -12,20 +12,15 @@ import { AppContext } from '../../App';
 export default function Map(props) {
   const markers = useContext(AppContext)
   // console.log(markers.geocode)
-console.log(props.coord)
-console.log(props.zoom)
+console.log( "props cord is " + props.coord)
+console.log( "props cord is " + props.zoom)
 
   const StyledPop = styled(Popup)`
-  background-color: red;
   border-radius: 0;
-  .leaflet-popup-content-wrapper {
-    border-radius: 0;
-  }
-
-  .leaflet-popup-tip-container {
-    visibility: hidden;
-  }
-`;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+`
 
   // CREATES CUSTOM ICON FOR INDIVIDUAL
   const customIcon = new Icon ({
@@ -61,8 +56,8 @@ const createCustomClusterIcon = (cluster) => {
                 <Marker position={JSON.parse(marker.geocode)} icon={customIcon}>
                   <StyledPop>
                   <div className='popupView'>
-                      <img src= {marker.photo} alt='img' width="80" height="80"/>
-                      {marker.name}
+                      <img className='imgClass' src= {marker.photo} alt='img' width="80" height="80"/>
+                      <p className="pPop"> Name: {marker.name}</p>
                       <p className="pPop"> Rank: {marker.rank}</p>
                       <p className="pPop"> Email: {marker.email}</p>
                       <p className="pPop"> Rank: {marker.rank}</p>
