@@ -10,16 +10,16 @@ exports.up = function (knex) {
         table.boolean('has_skill_identifier').notNullable();
         table.string('arrived_on_station').notNullable();
         table.boolean('is_civilian').notNullable();
-        table.string('mos').defaultTo(null);                            
+        table.string('mos').defaultTo(null);
         table.string('rank').defaultTo(null);
         table.string('email').defaultTo(null);
         table.string('geocode');
-        table.string('mgrs').defaultTo(null);                           
+        table.string('mgrs').defaultTo(null);
         table.integer('branch_id').unsigned().notNullable();
         table.foreign('branch_id').references('branch.id');
-        table.integer('unit_id').unsigned().notNullable();              
+        table.integer('unit_id').unsigned().notNullable();
         table.foreign('unit_id').references('unit.id');
-        table.integer('installation_id').unsigned().notNullable();      
+        table.integer('installation_id').unsigned().notNullable();
         table.foreign('installation_id').references('installation.id');
         table.string('photo');
     })

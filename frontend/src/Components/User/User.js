@@ -38,6 +38,11 @@ export default function User() {
                       <p className='pstyle'>Clearance: {marker.clearance}</p>
                       <p className='pstyle'>arrived_on_station: {marker.arrived_on_station}</p>
                       <p className='pstyle'>Base: {marker.installation_id}</p>
+                      <p className='pstyle'>Coder?: {marker.has_skill_identifier}</p>
+                      <p className='pstyle'>Civilian?: {marker.is_civilian}</p>
+                      <p className='pstyle'>Rank: {marker.rank}</p>
+                      <p className='pstyle'>Email: {marker.email}</p>
+
                     </div>
                     ))}
           </div>
@@ -47,3 +52,13 @@ export default function User() {
 
   )
 }
+
+// "has_skill_identifier": false,
+//     "arrived_on_station": "2023-07-06",
+//     "is_civilian": false,
+//     "rank": "Petty Officer First Class",
+//     "email": "Cornell73@hotmail.com",
+//     "geocode": "40.7128, 74.006",
+//     "branch_id": " 4",
+//     "unit_id": " 5",
+//     "installation_id": "45",

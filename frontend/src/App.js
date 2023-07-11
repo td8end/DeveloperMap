@@ -33,7 +33,6 @@ function App() {
             <h1 className='HeaderTitle' id='header-title' onClick={() => navigate('/')}>DevMap</h1>
       </div>
 
-      {/* this is the breadcromb bar */}
       <AppContext.Provider value={markers}>
         <Routes>
             <Route path="/" element={<Login/>}/>

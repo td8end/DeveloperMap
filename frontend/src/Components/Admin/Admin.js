@@ -97,23 +97,38 @@ function Admin() {
   const navigate = useNavigate();
   const [ searchText, setSearchText ] = useState("")
   const [ data, setData ] = useState([])
+  // FORM DATA STATE
   const [ username, setName ] = useState('')
-  const [ userbase, setBase ] = useState('')
+  const [ userGeocode, setGeocode ] = useState('')
+  const [ userClearance, setClearance ] = useState('')
+  const [ userArrivedOnStation, setArrivedOnStation ] = useState('')
+  const [ userBase, setBase ] = useState('')
+  const [ userCoder, setCoder ] = useState('')
+  const [ userCivilian, setUserCivilian ] = useState('')
+  const [ userRank, setRank ] = useState('')
+  const [ userEmail, setEmail ] = useState('')
+
+
 
   const markers = useContext(AppContext)
 
 
   const handleSubmit = (e) => {
-    // e.preventDefault();
-    const AdminUpdate = { username, userbase};
+    const AdminUpdate = { username, userGeocode, userClearance, userArrivedOnStation, userBase, userCoder, userCivilian, userRank, userEmail };
     console.log(AdminUpdate);
   }
 
   const AllData = (markers) => {
     setData(markers)
     setName(markers.name)
-    setBase(markers.base)
-
+    setGeocode(markers.geocode)
+    setClearance(markers.clearance)
+    setArrivedOnStation(markers.arrived_on_station)
+    setBase(markers.installation_id)
+    setCoder(markers.has_skill_identifier)
+    setUserCivilian(markers.is_civilian)
+    setRank(markers.rank)
+    setEmail(markers.email)
   }
 
   return (
@@ -134,10 +149,14 @@ function Admin() {
                 .map(marker => (
                       <div className='AdminsingleContainer' onClick={() => AllData(marker)}>
                         <h3 className='nameStyle'>{marker.name}</h3>
-                        <p className='Adminpstyle'>Location: {marker.geocode}</p>
-                        <p className='Adminpstyle'>Detials: {marker.popUp}</p>
-                        <p className='Adminpstyle'>Authorized: {marker.authorized}</p>
-                        <p className='Adminpstyle'>Base: {marker.base}</p>
+                        <p className='pstyle'>Location: {marker.geocode}</p>
+                        <p className='Adminpstyle'>Clearance: {marker.clearance}</p>
+                        <p className='Adminpstyle'>arrived_on_station: {marker.arrived_on_station}</p>
+                        <p className='Adminpstyle'>Base: {marker.installation_id}</p>
+                        <p className='Adminpstyle'>Coder?: {marker.has_skill_identifier}</p>
+                        <p className='Adminpstyle'>Civilian?: {marker.is_civilian}</p>
+                        <p className='Adminpstyle'>Rank: {marker.rank}</p>
+                        <p className='Adminpstyle'>Email: {marker.email}</p>
                       </div>
                       ))}
               </div>
@@ -149,18 +168,60 @@ function Admin() {
                   <div className='FormDetails'>
 
                       <form id='myForm' onSubmit = {handleSubmit}>
-                            <label> Name </label> 
+                            <label> Name: </label> 
                             <input
                               type='text'
                               value={ username }
                               onChange={(e) => setName(e.target.value)}
                               />
 
-                            <label> Base </label> 
+                            <label> GeoCode: </label> 
                             <input
                               type='text'
-                              value={userbase}
-                              onChange={(e) => setBase(e.target.value)}
+                              value={ userGeocode }
+                              onChange={(e) => setGeocode(e.target.value)}
+                              />
+
+                            <label> Clearance: </label> 
+                            <input
+                              type='text'
+                              value={userClearance}
+                              onChange={(e) => setClearance(e.target.value)}
+                              />
+
+                            <label> Arrived On Station: </label> 
+                            <input
+                              type='text'
+                              value={ userArrivedOnStation }
+                              onChange={(e) => setArrivedOnStation(e.target.value)}
+                              />
+
+                            <label> Coder?: </label> 
+                            <input
+                              type='text'
+                              value={userCoder}
+                              onChange={(e) => setCoder(e.target.value)}
+                              />
+
+                            <label> Civilian?:  </label> 
+                            <input
+                              type='text'
+                              value={ userCivilian }
+                              onChange={(e) => setUserCivilian(e.target.value)}
+                              />
+
+                            <label> Rank: </label> 
+                            <input
+                              type='text'
+                              value={userRank}
+                              onChange={(e) => setRank(e.target.value)}
+                              />
+
+                            <label> Email: </label> 
+                            <input
+                              type='text'
+                              value={userEmail}
+                              onChange={(e) => setEmail(e.target.value)}
                               />
                       </form>
                             
