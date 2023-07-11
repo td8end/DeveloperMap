@@ -16,7 +16,7 @@
 git fetch origin
 git checkout dev
 ```
-**It may not make sense to branch today, I recognise that; but I wanted to learn how to do this properly** 
+**branching properly** 
 creating a branch locally
 ```
 git checkout -b frontend  
