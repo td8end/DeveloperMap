@@ -1,6 +1,6 @@
 
 import './Map.css';
-import { useContext } from 'react';
+import { useContext,useState,useEffect } from 'react';
 import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import MarkerClusterGroup from 'react-leaflet-cluster';
@@ -9,14 +9,33 @@ import styled from 'styled-components';
 import { AppContext } from '../../App';
 
 
+<<<<<<< HEAD
 export default function Map() {
   const markers = useContext(AppContext)
   console.log(markers.geocode)
 
+=======
+export default function Map(props) {
+  const markers = useContext(AppContext)
+  const [filteredMarkers, setFilteredMarkers] = useState(markers);
+  
+  // console.log(markers.geocode)
+console.log( "props cord is " + props.coord)
+console.log( "props zoom is " + props.zoom)
+console.log( "props coder is " + props.coder)
+useEffect(() => {
+  if (props.coder === "true") {
+    setFilteredMarkers(markers.filter(marker => marker.has_skill_identifier.toString() === props.coder 
+      && marker.name.toLowerCase().startsWith(props.searchText)));
+  } else {
+    setFilteredMarkers(markers.filter(marker => marker.name.toLowerCase().startsWith(props.searchText)));
+  }
+}, [markers, props.coder, props.searchText]);
+>>>>>>> testing
 
   const StyledPop = styled(Popup)`
-  background-color: red;
   border-radius: 0;
+<<<<<<< HEAD
   .leaflet-popup-content-wrapper {
     border-radius: 0;
   }
@@ -91,6 +110,12 @@ export default function Map() {
   // ]
 
 
+=======
+  display: flex;
+  justify-content: center;
+  text-align: center;
+`
+>>>>>>> testing
 
   // CREATES CUSTOM ICON FOR INDIVIDUAL
   const customIcon = new Icon ({
@@ -111,7 +136,7 @@ const createCustomClusterIcon = (cluster) => {
 
   return (
     <>
-        <MapContainer center={[39.0997, -94.5786]} zoom={4}>
+        <MapContainer center={props.coord} zoom={props.zoom}>
 
           {/* This sets up the tiles */}
           <TileLayer
@@ -122,17 +147,17 @@ const createCustomClusterIcon = (cluster) => {
           <MarkerClusterGroup 
             chunkedLoading 
             iconCreateFunction={createCustomClusterIcon}>
-              {markers.map(marker => (
-                <Marker position={marker.geocode} icon={customIcon}>
-                  <StyledPop>{marker.popUp}
-                  <div>
-                    <img
-                    src='https://upload.wikimedia.org/wikipedia/commons/a/a3/ThinkCentre_S50.jpg' alt='img'
-                        width="40"
-                        height="40"
-                      />
+              {filteredMarkers.map(marker => (
+                <Marker position={JSON.parse(marker.geocode)} icon={customIcon}>
+                  <StyledPop>
+                  <div className='popupView'>
+                      <img className='imgClass' src= {marker.photo} alt='img' width="80" height="80"/>
+                      <p className="pPop"> Name: {marker.name}</p>
+                      <p className="pPop"> Rank: {marker.rank}</p>
+                      <p className="pPop"> Email: {marker.email}</p>
+                      <p className="pPop"> Rank: {marker.rank}</p>
+                      <p className="pPop"> Coder?: {marker.has_skill_identifier.toString()}</p>
                   </div>
-
                 </StyledPop>
                 </Marker>
               ))}

@@ -6,97 +6,11 @@ import './Admin.css';
 import { AppContext } from '../../App';
 
 
-// const markers = [
-//   {
-//     name: 'Fred',
-//     base: 'Schriever',
-//     geocode: [39.0997, -94.5786],
-//     popUp: 'Hello i am marker 1',
-//     authorized: 10,
-//   },
-//   {
-//     name: 'Fred2',
-//     base: 'Schriever',
-//     geocode: [39.0997, -94.5786],
-//     popUp: 'Hello i am marker 1',
-//     authorized: 10,
-//   },
-//   {    
-//     name: 'Fred8',
-//     base: 'Vandenburg',
-//     geocode: [39.0997, -94.5786],
-//     popUp: 'Hello i am marker 1',
-//     authorized: 10,
-//   },
-//   {
-//     name: 'Fred8',
-//     base: 'Vandenburg',
-//     geocode: [39.0997, -94.5786],
-//     popUp: 'Hello i am marker 1',
-//     authorized: 10,
-//   },
-//   {
-//     name: 'Fred8',
-//     base: 'Vandenburg',
-//     geocode: [39.0997, -94.5786],
-//     popUp: 'Hello i am marker 1',
-//     authorized: 10,
-//   },
-//   {
-//     name: 'Fred6',
-//     base: 'Vandenburg',
-//     geocode: [39.0997, -94.5786],
-//     popUp: 'Hello i am marker 1',
-//     authorized: 10,
-//   },
-//   {
-//     name: 'Fred7',
-//     base: 'Peterson',
-//     geocode: [39.0997, -94.5786],
-//     popUp: 'Hello i am marker 1',
-//     authorized: 10,
-//   },
-//   {
-//     name: 'Fred8',
-//     base: 'Buckley',
-//     geocode: [39.0994, -94.40],
-//     popUp: 'Hello i am marker 1',
-//     authorized: 10,
-//   },
-//   {
-//     name: 'Fred9',
-//     base: 'Buckley',
-//     geocode: [39.0994, -94.40],
-//     popUp: 'Hello i am marker 1',
-//     authorized: 10,
-//   },
-//   {
-//     name: 'Fred10',
-//     base: 'Buckley',
-//     geocode: [31.0994, -94.40],
-//     popUp: 'Hello i am marker 1',
-//     authorized: 10,
-//   },
-//   {
-//     name: 'Fred11',
-//     base: 'Lackland',
-//     geocode: [31.0994, -94.40],
-//     popUp: 'Hello i am marker 1',
-//     authorized: 10,
-//   },
-//   {
-//     name: 'Fred12',
-//     base: 'Lackland',
-//     geocode: [31.0994, -94.40],
-//     popUp: 'Hello i am marker 1',
-//     authorized: 10,
-//   },
-// ]
-
 function Admin() {
   const navigate = useNavigate();
   const [ searchText, setSearchText ] = useState("")
   const [ data, setData ] = useState([])
+<<<<<<< HEAD
   // FORM DATA STATE
   const [ username, setName ] = useState('')
   const [ userGeocode, setGeocode ] = useState('')
@@ -109,13 +23,54 @@ function Admin() {
   const [ userEmail, setEmail ] = useState('')
 
 
+=======
+  
+  const [ name, setName ] = useState('')
+  const [ geocode, setGeocode ] = useState('')
+  const [ clearance, setClearance ] = useState('')
+  const [ arrived_on_station, setArrivedOnStation ] = useState('')
+  const [ installation_id, setBase ] = useState('')
+  const [ has_skill_identifier, setCoder ] = useState(false)
+  const [ is_civilian, setUserCivilian ] = useState(false)
+  const [ rank, setRank ] = useState('')
+  const [ email, setEmail ] = useState('')
+  const [ mos, setMos ] = useState(null)
+  const [ mgrs, setMgrs ] = useState(null)
+  const [ branch_id, setBranch ] = useState(0)
+  const [ unit_id, setUnitId ] = useState(0)
+  const photo = "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/336.jpg"
+>>>>>>> testing
 
   const markers = useContext(AppContext)
 
 
   const handleSubmit = (e) => {
+<<<<<<< HEAD
     const AdminUpdate = { username, userGeocode, userClearance, userArrivedOnStation, userBase, userCoder, userCivilian, userRank, userEmail };
+=======
+    // e.preventDefault();
+    const AdminUpdate = { name, clearance, has_skill_identifier, arrived_on_station, is_civilian, mos, rank, email, geocode, mgrs, branch_id, unit_id, installation_id, photo};
+>>>>>>> testing
     console.log(AdminUpdate);
+    fetch('http://localhost:8081/test', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({data:AdminUpdate})
+    })
+    .then(response => response.json()
+    ).then(function (data) {
+      console.log(data);
+    });
+    // };
+    
+ 
+    // Patch('http://localhost:8081/personnel', {
+    //   AdminUpdate
+    // })
+    // .then(res => console.log(response.data))
+    // .catch(error=>console.error(err))
   }
 
   const AllData = (markers) => {
@@ -129,6 +84,14 @@ function Admin() {
     setUserCivilian(markers.is_civilian)
     setRank(markers.rank)
     setEmail(markers.email)
+<<<<<<< HEAD
+=======
+    setMos(markers.mos)
+    setMgrs(markers.mgrs)
+    setBranch(markers.branch_id)
+    setUnitId(markers.unit_id)
+
+>>>>>>> testing
   }
 
   return (
@@ -148,6 +111,7 @@ function Admin() {
 
                 .map(marker => (
                       <div className='AdminsingleContainer' onClick={() => AllData(marker)}>
+<<<<<<< HEAD
                         <h3 className='nameStyle'>{marker.name}</h3>
                         <p className='pstyle'>Location: {marker.geocode}</p>
                         <p className='Adminpstyle'>Clearance: {marker.clearance}</p>
@@ -157,6 +121,18 @@ function Admin() {
                         <p className='Adminpstyle'>Civilian?: {marker.is_civilian}</p>
                         <p className='Adminpstyle'>Rank: {marker.rank}</p>
                         <p className='Adminpstyle'>Email: {marker.email}</p>
+=======
+                      <h3 className='nameStyle'>{marker.name}</h3>
+                      <img src= {marker.photo} alt='img' width="90" height="90"/>
+                      <p className='Adminpstyle'>Location: {marker.geocode}</p>
+                      <p className='Adminpstyle'>Clearance: {marker.clearance}</p>
+                      <p className='Adminpstyle'>arrived_on_station: {marker.arrived_on_station}</p>
+                      <p className='Adminpstyle'>Base: {marker.installation_id}</p>
+                      <p className='Adminpstyle'>Coder?: {marker.has_skill_identifier.toString()}</p>
+                      <p className='Adminpstyle'>Civilian?: {marker.is_civilian.toString()}</p>
+                      <p className='Adminpstyle'>Rank: {marker.rank}</p>
+                      <p className='Adminpstyle'>Email: {marker.email}</p>
+>>>>>>> testing
                       </div>
                       ))}
               </div>
@@ -168,30 +144,46 @@ function Admin() {
                   <div className='FormDetails'>
 
                       <form id='myForm' onSubmit = {handleSubmit}>
+<<<<<<< HEAD
                             <label> Name: </label> 
+=======
+                            <label> Name:  </label> 
+>>>>>>> testing
                             <input
                               type='text'
-                              value={ username }
+                              value={ name }
                               onChange={(e) => setName(e.target.value)}
                               />
 
+<<<<<<< HEAD
                             <label> GeoCode: </label> 
                             <input
                               type='text'
                               value={ userGeocode }
+=======
+                            <label> Location: </label> 
+                            <input
+                              type='text'
+                              value={geocode}
+>>>>>>> testing
                               onChange={(e) => setGeocode(e.target.value)}
                               />
 
                             <label> Clearance: </label> 
                             <input
                               type='text'
+<<<<<<< HEAD
                               value={userClearance}
+=======
+                              value={ clearance }
+>>>>>>> testing
                               onChange={(e) => setClearance(e.target.value)}
                               />
 
                             <label> Arrived On Station: </label> 
                             <input
                               type='text'
+<<<<<<< HEAD
                               value={ userArrivedOnStation }
                               onChange={(e) => setArrivedOnStation(e.target.value)}
                               />
@@ -207,12 +199,30 @@ function Admin() {
                             <input
                               type='text'
                               value={ userCivilian }
+=======
+                              value={arrived_on_station}
+                              onChange={(e) => setArrivedOnStation(e.target.value)}
+                              />
+
+                             <label> Coder? :  </label> 
+                            <input
+                              type='text'
+                              value={has_skill_identifier}
+                              onChange={(e) => setCoder(e.target.value)}
+                              />
+
+                            <label> Civilian? : </label> 
+                            <input
+                              type='text'
+                              value={is_civilian}
+>>>>>>> testing
                               onChange={(e) => setUserCivilian(e.target.value)}
                               />
 
                             <label> Rank: </label> 
                             <input
                               type='text'
+<<<<<<< HEAD
                               value={userRank}
                               onChange={(e) => setRank(e.target.value)}
                               />
@@ -222,6 +232,45 @@ function Admin() {
                               type='text'
                               value={userEmail}
                               onChange={(e) => setEmail(e.target.value)}
+=======
+                              value={ rank }
+                              onChange={(e) => setRank(e.target.value)}
+                              />
+
+                            <label> Email </label> 
+                            <input
+                              type='text'
+                              value={email}
+                              onChange={(e) => setEmail(e.target.value)}
+                              />
+
+                            {/* <label> MOS :  </label> 
+                            <input
+                              type='text'
+                              value={mos}
+                              onChange={(e) => setMos(e.target.value)}
+                              />
+
+                            <label> MGRS: </label> 
+                            <input
+                              type='text'
+                              value={mgrs}
+                              onChange={(e) => setMgrs(e.target.value)}
+                              /> */}
+
+                            <label> Branch ID: </label> 
+                            <input
+                              type='text'
+                              value={ branch_id }
+                              onChange={(e) => setBranch(e.target.value)}
+                              />
+
+                            <label> Unit ID: </label> 
+                            <input
+                              type='text'
+                              value={unit_id}
+                              onChange={(e) => setUnitId(e.target.value)}
+>>>>>>> testing
                               />
                       </form>
                             
