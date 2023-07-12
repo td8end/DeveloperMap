@@ -3,6 +3,11 @@
 We are unable to quickly see how many Galvanize graduates we have in our work force and need an easy way to assess their current unit/locations using a density map. Additionally, we need to view how long they have been at their current locations to enable personnel movements.
 Fix: Develop application that will retrieve personnel data for quick view enabling us to assess talent management/work force needs
 
+## Use cases:
+*User: Should be able to search for users at a wide range of installations
+
+*Administrator: The administrator should be able to create new users, edit existing users, and delete users that are no longer active. 
+
 ## Setup:
 1.  Fork and Clone this repository
 2.  Inside the DeveloperMap directory, navigate to the /frontend and /server directory and run `npm i` and `npm start` in each respective folder.
