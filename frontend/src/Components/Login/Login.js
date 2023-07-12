@@ -32,7 +32,7 @@ function Login() {
   return (
     <>
       <div className='FormContainer'>
-        <h1>Login In</h1>
+        <h1>Login</h1>
         <div>
           <h4><label for='loginSelect'>Role: </label>
           <select value={signIn} onChange={handleChange} className='selectCss' id="loginSelect">

@@ -118,8 +118,16 @@
     overflow-x: scroll;
 }
 
+/* .FormDetails {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1%;
+  height: calc(100% - 100px); 
+  overflow-y: auto;
+} */
+
 #myForm {
-  height: 50%;
+  height: 57%;
   width: 50%;
   display: flex;
   flex-direction: column;

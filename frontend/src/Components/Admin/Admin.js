@@ -52,20 +52,20 @@ function Admin() {
     
     const handleUpdate = (e) => {
       // e.preventDefault();
-      // const AdminUpdate = { name, clearance, has_skill_identifier, arrived_on_station, is_civilian, mos, rank, email, geocode, mgrs, branch_id, unit_id, installation_id, photo};
-      // console.log(AdminUpdate);
-      // // setLoad(true)
-      // fetch('http://localhost:8081/update', {
-      //   method: 'PATCH',
-      //   headers: {
-      //       'Content-Type': 'application/json'
-      //           },
-      //           body: JSON.stringify({data:AdminUpdate})
-      // })
-      // .then(response => response.json()
-      // ).then(function (data) {
-      //   console.log(data);
-      // });
+      const AdminUpdate = { name, clearance, has_skill_identifier, arrived_on_station, is_civilian, mos, rank, email, geocode, mgrs, branch_id, unit_id, installation_id, photo};
+      console.log(AdminUpdate);
+      // setLoad(true)
+      fetch(`http://localhost:8081/update/${name}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({data:AdminUpdate})
+      })
+      .then(response => response.json()
+      ).then(function (data) {
+        console.log(data);
+      });
       };
 
 
@@ -80,6 +80,7 @@ function Admin() {
     // e.preventDefault();
     const AdminUpdate = { name };
     console.log(AdminUpdate);
+    alert(`Member " ${name} " has been deleted`)
     // setLoad(true)
     fetch(`http://localhost:8081/testdelete/${name}`, {
          method: 'DELETE' })
@@ -232,7 +233,7 @@ function Admin() {
                             
                   </div>
                   <div className='Footer'>
-                    {/* <button className='UpdateBtn' onClick={() => {handleUpdate()}}>UPDATE USER</button> */}
+                    <button className='UpdateBtn' onClick={() => {handleUpdate()}}>UPDATE USER</button>
                     <button className='AddBtn' onClick={() => {handleSubmit()}}>ADD USER</button>
                     <button className='DeleteBtn' onClick={() => {handleDelete()}}>DELETE USER</button>
                   </div>

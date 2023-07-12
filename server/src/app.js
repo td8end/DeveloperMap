@@ -88,12 +88,31 @@ app.post('/test', async (req, res) => {
         console.error(error);
     }});
 
-
-
-
-
-
+    app.patch('/update/:name', async (req, res) => {
+        if(res.statusCode != 200) {
+            throw new Error(`Sever response not good, server code: ${res.statusCode}`)
+        }
     
+        const { name } = req.params;
+        let updateValues = req.body.data;
+
+        knex('personnel')
+            .where({name})
+            .update(updateValues)
+            .update(updateValues)
+            .then(count => {
+                console.log(`Updated ${count} row(s)`);
+                res.json({ success: true });
+            })
+            .catch(err => {
+                console.error(err);
+                res.status(500).json({ success: false });
+    
+            })
+    })
+
+
+
     app.delete('/testdelete/:name', cors(), (req, res) => {
         const { name } = req.params;
         knex('personnel')

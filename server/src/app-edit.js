@@ -3,7 +3,7 @@ var cors = require('cors')
 const app = express();
 const port = 8081;
 const knex = require('knex')(require('../knexfile.js')["development"]);
-const  cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
 
@@ -52,7 +52,7 @@ app.get('/personnel', cors(), (req, res) => {
 
 app.post('/test', async (req, res) => {
     let userToAdd = req.body.data;
-    
+
     console.log("Adding a new user:", userToAdd.name)
 
     // if(req.cookies.idCookie) {
@@ -100,7 +100,7 @@ app.post('/test', async (req, res) => {
 })
 
 app.patch('/update', (req, res) => {
-    if(res.statusCode != 200) {
+    if (res.statusCode != 200) {
         throw new Error(`Sever response not good, server code: ${res.statusCode}`)
     }
 
@@ -110,36 +110,36 @@ app.patch('/update', (req, res) => {
     let { name, clearance, has_skill_identifier, arrived_on_station, is_civilian, mos, rank, email, geocode, mgrs, branch_id, unit_id, installation_id, photo } = req.body;
 
     userToUpdate.forEach((personnel, index) => {
-        if(personnel.id == requestedID) {
-            if(name){userToUpdate[index].name = name};
-            if(clearance){userToUpdate[index].clearance = clearance};
-            if(has_skill_identifier){userToUpdate[index].has_skill_identifier = has_skill_identifier};
-            if(arrived_on_station){userToUpdate[index].arrived_on_station = arrived_on_station};
-            if(is_civilian){userToUpdate[index].is_civilian = is_civilian};
-            if(mos){userToUpdate[index].mos = mos};
-            if(rank){userToUpdate[index].rank = rank};
-            if(email){userToUpdate[index].email = email};
-            if(geocode){userToUpdate[index].geocode = geocode};
-            if(mgrs){userToUpdate[index].mgrs = mgrs};
-            if(branch_id){userToUpdate[index].branch_id = branch_id};
-            if(unit_id){userToUpdate[index].unit_id = unit_id};
-            if(installation_id){userToUpdate[index].installation_id = installation_id};
-            if(photo){userToUpdate[index].photo = photo};
+        if (personnel.id == requestedID) {
+            if (name) { userToUpdate[index].name = name };
+            if (clearance) { userToUpdate[index].clearance = clearance };
+            if (has_skill_identifier) { userToUpdate[index].has_skill_identifier = has_skill_identifier };
+            if (arrived_on_station) { userToUpdate[index].arrived_on_station = arrived_on_station };
+            if (is_civilian) { userToUpdate[index].is_civilian = is_civilian };
+            if (mos) { userToUpdate[index].mos = mos };
+            if (rank) { userToUpdate[index].rank = rank };
+            if (email) { userToUpdate[index].email = email };
+            if (geocode) { userToUpdate[index].geocode = geocode };
+            if (mgrs) { userToUpdate[index].mgrs = mgrs };
+            if (branch_id) { userToUpdate[index].branch_id = branch_id };
+            if (unit_id) { userToUpdate[index].unit_id = unit_id };
+            if (installation_id) { userToUpdate[index].installation_id = installation_id };
+            if (photo) { userToUpdate[index].photo = photo };
             res.send(personnel);
         }
     });
 })
 
 app.get('/search/:installation_id', (req, res) => {
-    const {installation_id} = req.params 
+    const { installation_id } = req.params
     res.send('testing it works')
     getAllPersonnelFromInstallation(installation_id)
 })
 
-function getAllPersonnelFromInstallation(installation){
+function getAllPersonnelFromInstallation(installation) {
     return knex.select()
-    .from("personnel")
-    .where( {installation_id:installation} )
+        .from("personnel")
+        .where( "installation_id", (knex.select('id').from("installation").where('installation', installation)) )
 }
 
 app.listen(port, () => {
