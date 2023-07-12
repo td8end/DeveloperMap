@@ -197,8 +197,8 @@ function Admin() {
                             
                   </div>
                   <div className='Footer'>
-                    <button className='UpdateBtn' onClick={() => {handleSubmit()}}>UPDATE USER</button>
-                    <button className='AddBtn' onClick={() => setData([])}>ADD USER</button>
+                    {/* <button className='UpdateBtn' onClick={() => {handleSubmit()}}>UPDATE USER</button> */}
+                    <button className='AddBtn' onClick={() => {handleSubmit()}}>ADD USER</button>
                     <button className='DeleteBtn' onClick={() => setData([])}>DELETE USER</button>
                   </div>
           </div>

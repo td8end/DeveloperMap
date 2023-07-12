@@ -78,14 +78,13 @@
   display: flex;
   flex-direction: column;
 }
-/* I don't know why the AdminLeft below is disfunctional */
-/* .AdminLeft {
-  display: flex;
-  width: 30vw;
-  height: 5vh;
-  margin-left: 2vw;
-  flex-direction: column;
-} */
+
+.FormInput{
+    background-color: lightgrey;
+    width: 60vw;
+    height: 50%;
+
+}
 
 .FormInput {
   background-color: lightgrey;
@@ -111,27 +110,21 @@
   height: 30px;
 }
 
-.FormDetails {
-  height: 50%;
-  width: 50%;
-  flex: 1;
-  overflow-y: auto;
-  padding-top: 1%;
-  padding-left: 5%;
-  border-bottom-left-radius: 0.4vw;
-  border-bottom-right-radius: 0.4vw;
-}
+/* .FormDetails {
+    display: flex;
+    flex-direction: column;
+    padding-left: 5%;
+    height: 100%;
+    overflow-x: scroll;
+} */
 
 #myForm {
   height: 50%;
   width: 50%;
-  position: fixed;
   display: flex;
   flex-direction: column;
   margin-bottom: 30%;
-  padding-right: 1%;
-  border-bottom-left-radius: 0.4vw;
-  border-bottom-right-radius: 0.4vw;
+  padding-left: 1%;
   overflow-y: auto;
 }
 
@@ -149,6 +142,7 @@ input {
   padding: 1% 2%;
   border-bottom-left-radius: 0.4vw;
   border-bottom-right-radius: 0.4vw;
+  padding-bottom: 1%;
 }
 
 .UpdateBtn {
@@ -192,6 +186,7 @@ input {
   transition: 0.3s;
   opacity: 1;
 }
+
 /* Tablets */
 /* @media screen and (max-width: 1024px) {
   .AdminLeft,
