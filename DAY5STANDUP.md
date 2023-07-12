@@ -1,3 +1,8 @@
+# Current status
+* backend POST receiver works, frontend POST sender does not
+* Filtering the map and users works. Could use some more server calls for actual DB queries
+* Somewhere on the client side, there is a fetch request limit of 1000. We have 800 users currently
+* I'm working in the testing branch. Run adds and commits often if you're changing files so we don't lose anything. Talk to the team before deleting anything.
 ## TODO before lunch
 * Finish the form input (some values are not nullable, I think we have some JSON mismatch stuff, this is very doable, the curl works)
 * TRY to setup a query endpoint so that we can return the unit name on the cards, should be a join of personnel.id and unit_id
