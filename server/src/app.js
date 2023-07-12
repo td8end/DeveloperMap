@@ -145,6 +145,20 @@ app.post('/test', async (req, res) => {
 //     getAllPersonnelFromInstallation(installation_id)
 // })
 
+app.get('/search/:installation_id', (req, res) => {
+    const { installation_id } = req.params
+    getAllPersonnelFromInstallation(req.params.installation_id)
+    .then(data => res.status(200).json(data))
+    .catch(err => res.status(404).json({message: "Nope"}));
+    getAllPersonnelFromInstallation(installation_id)
+})
+
+function getAllPersonnelFromInstallation(installation) {
+    return knex.select()
+        .from("personnel")
+        .where( "installation_id", (knex.select('id').from("installation").where('installation', installation)) )
+}
+
 
 app.listen(port, () => {
     console.log(`Server running at ${port}.  Let's see some queries!`)
