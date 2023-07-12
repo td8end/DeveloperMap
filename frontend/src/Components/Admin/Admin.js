@@ -27,13 +27,16 @@ function Admin() {
   const photo = "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/336.jpg"
 
   const markers = useContext(AppContext)
+  
+  // const [ load, setLoad ] = useState(false)
 
 
   const handleSubmit = (e) => {
     // e.preventDefault();
     const AdminUpdate = { name, clearance, has_skill_identifier, arrived_on_station, is_civilian, mos, rank, email, geocode, mgrs, branch_id, unit_id, installation_id, photo};
     console.log(AdminUpdate);
-    fetch('http://localhost:8081/test', {
+    // setLoad(true)
+    fetch('http://localhost:8081/test/', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
@@ -44,15 +47,47 @@ function Admin() {
     ).then(function (data) {
       console.log(data);
     });
-    // };
+    };
     
- 
+    
+    const handleUpdate = (e) => {
+      // e.preventDefault();
+      // const AdminUpdate = { name, clearance, has_skill_identifier, arrived_on_station, is_civilian, mos, rank, email, geocode, mgrs, branch_id, unit_id, installation_id, photo};
+      // console.log(AdminUpdate);
+      // // setLoad(true)
+      // fetch('http://localhost:8081/update', {
+      //   method: 'PATCH',
+      //   headers: {
+      //       'Content-Type': 'application/json'
+      //           },
+      //           body: JSON.stringify({data:AdminUpdate})
+      // })
+      // .then(response => response.json()
+      // ).then(function (data) {
+      //   console.log(data);
+      // });
+      };
+
+
     // Patch('http://localhost:8081/personnel', {
     //   AdminUpdate
     // })
     // .then(res => console.log(response.data))
     // .catch(error=>console.error(err))
+  // }
+
+  const handleDelete = (e) => {
+    // e.preventDefault();
+    const AdminUpdate = { name };
+    console.log(AdminUpdate);
+    // setLoad(true)
+    fetch(`http://localhost:8081/testdelete/${name}`, {
+         method: 'DELETE' })
+        .catch(error=>console.error(error))
+
+        // .then(() => setStatus('Delete successful'));
   }
+
 
   const AllData = (markers) => {
     setData(markers)
@@ -197,9 +232,9 @@ function Admin() {
                             
                   </div>
                   <div className='Footer'>
-                    {/* <button className='UpdateBtn' onClick={() => {handleSubmit()}}>UPDATE USER</button> */}
+                    {/* <button className='UpdateBtn' onClick={() => {handleUpdate()}}>UPDATE USER</button> */}
                     <button className='AddBtn' onClick={() => {handleSubmit()}}>ADD USER</button>
-                    <button className='DeleteBtn' onClick={() => setData([])}>DELETE USER</button>
+                    <button className='DeleteBtn' onClick={() => {handleDelete()}}>DELETE USER</button>
                   </div>
           </div>
         </div>
@@ -207,4 +242,4 @@ function Admin() {
   );
 }
 
-export default Admin;
+export default Admin

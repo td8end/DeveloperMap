@@ -86,7 +86,28 @@ app.post('/test', async (req, res) => {
     } catch (error) {
         res.status(500).send('Error inserting user to the database');
         console.error(error);
-    }
+    }});
+
+
+
+
+
+
+    
+    app.delete('/testdelete/:name', cors(), (req, res) => {
+        const { name } = req.params;
+        knex('personnel')
+        .where({name})
+        .del()
+        .then(count => {
+            console.log(`Deleted ${count} row(s)`);
+            res.json({ success: true });
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ success: false });
+        
+    })
     // //Checking for malformed request or bad status code
     // if(Object.keys(usersToAdd).toString() != [ 'id', 'username', 'userGeocode', 'userEmail', 'userRank' ].toString()){
     //     res.send(`Request body content malformed, expected a complete book JSON object`);
@@ -99,7 +120,19 @@ app.post('/test', async (req, res) => {
 
 })
 
+// app.get('/search/:installation_id', (req, res) => {
+//     const {installation_id} = req.params 
+//     res.send('testing it works')
+//     getAllPersonnelFromInstallation(installation_id)
+// })
+
 
 app.listen(port, () => {
     console.log(`Server running at ${port}.  Let's see some queries!`)
 })
+
+// function getAllPersonnelFromInstallation(installation){
+//     return knex.select()
+//     .from("personnel")
+//     .where( {installation_id:installation} )
+// }
