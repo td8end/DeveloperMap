@@ -16,14 +16,14 @@ function Admin() {
   const [ clearance, setClearance ] = useState('')
   const [ arrived_on_station, setArrivedOnStation ] = useState('')
   const [ installation_id, setBase ] = useState('')
-  const [ has_skill_identifier, setCoder ] = useState('')
-  const [ is_civilian, setUserCivilian ] = useState('')
+  const [ has_skill_identifier, setCoder ] = useState(false)
+  const [ is_civilian, setUserCivilian ] = useState(false)
   const [ rank, setRank ] = useState('')
   const [ email, setEmail ] = useState('')
-  const mos = null
-  const mgrs = null
-  const branch_id = null
-  const unit_id = null
+  const [ mos, setMos ] = useState(null)
+  const [ mgrs, setMgrs ] = useState(null)
+  const [ branch_id, setBranch ] = useState(0)
+  const [ unit_id, setUnitId ] = useState(0)
   const photo = "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/336.jpg"
 
   const markers = useContext(AppContext)
