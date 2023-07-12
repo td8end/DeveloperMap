@@ -10,3 +10,7 @@ Fix: Develop application that will retrieve personnel data for quick view enabli
 
 ## Database Schema:
 ![erd](https://github.com/td8end/DeveloperMap/assets/74125401/19e15daa-4b6d-41c1-96c3-4b0573a498af)
+
+## Rough Wireframe of UI:
+
+![image](https://github.com/td8end/DeveloperMap/assets/125446030/be98c71d-a96e-4e33-a452-0a3f70b890e4)
