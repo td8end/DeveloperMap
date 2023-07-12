@@ -19,11 +19,13 @@ console.log( "props zoom is " + props.zoom)
 console.log( "props coder is " + props.coder)
 useEffect(() => {
   if (props.coder === "true") {
-    setFilteredMarkers(markers.filter(marker => marker.has_skill_identifier.toString() === props.coder));
+    setFilteredMarkers(markers.filter(marker => marker.has_skill_identifier.toString() === props.coder 
+      && marker.name.toLowerCase().startsWith(props.searchText)));
   } else {
-    setFilteredMarkers(markers);
+    setFilteredMarkers(markers.filter(marker => marker.name.toLowerCase().startsWith(props.searchText)));
   }
-}, [markers, props.coder]);
+}, [markers, props.coder, props.searchText]);
+
   const StyledPop = styled(Popup)`
   border-radius: 0;
   display: flex;
