@@ -65,6 +65,10 @@ function Admin() {
     setUserCivilian(markers.is_civilian)
     setRank(markers.rank)
     setEmail(markers.email)
+    setMos(markers.mos)
+    setMgrs(markers.mgrs)
+    setBranch(markers.branch_id)
+    setUnitId(markers.unit_id)
 
   }
 
@@ -160,6 +164,34 @@ function Admin() {
                               type='text'
                               value={email}
                               onChange={(e) => setEmail(e.target.value)}
+                              />
+
+                            {/* <label> MOS :  </label> 
+                            <input
+                              type='text'
+                              value={mos}
+                              onChange={(e) => setMos(e.target.value)}
+                              />
+
+                            <label> MGRS: </label> 
+                            <input
+                              type='text'
+                              value={mgrs}
+                              onChange={(e) => setMgrs(e.target.value)}
+                              /> */}
+
+                            <label> Branch ID: </label> 
+                            <input
+                              type='text'
+                              value={ branch_id }
+                              onChange={(e) => setBranch(e.target.value)}
+                              />
+
+                            <label> Unit ID: </label> 
+                            <input
+                              type='text'
+                              value={unit_id}
+                              onChange={(e) => setUnitId(e.target.value)}
                               />
                       </form>
                             
