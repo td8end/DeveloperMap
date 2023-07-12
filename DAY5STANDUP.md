@@ -11,3 +11,5 @@ SELECT setval('personnel_id_seq', (SELECT MAX(id) FROM personnel));
 ```
 ### what we would have done with more time (again please edit)
 * more backend queries. 
+
+### At the end of this thing I'll merge it all into origin main
