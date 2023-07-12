@@ -42,7 +42,7 @@ function Login() {
         </div>
         <div>
           <input className='userInputs' name='UserId' placeholder="User Name..." type='text' />
-          <input className='userInputs' name='PassWord' placeholder="User Password..." type='text' />
+          <input className='userInputs' name='PassWord' placeholder="User Password..." type='password' />
         </div>
         <button className='LoginBtn' onClick={() => navigate(`${signIn}`)}>Login</button>
       </div>

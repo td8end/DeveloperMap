@@ -24,7 +24,7 @@ function Admin() {
   const [ mgrs, setMgrs ] = useState(null)
   const [ branch_id, setBranch ] = useState(0)
   const [ unit_id, setUnitId ] = useState(0)
-  const photo = "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/336.jpg"
+  const [ photo , setPhoto] = useState('https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/336.jpg')
 
   const markers = useContext(AppContext)
   
@@ -111,6 +111,7 @@ function Admin() {
     setMgrs(markers.mgrs)
     setBranch(markers.branch_id)
     setUnitId(markers.unit_id)
+    setPhoto(markers.photo)
 
   }
 
@@ -234,6 +235,13 @@ function Admin() {
                               type='text'
                               value={unit_id}
                               onChange={(e) => setUnitId(e.target.value)}
+                              />
+
+                            <label> Photo: </label> 
+                            <input
+                              type='text'
+                              value={ photo}
+                              onChange={(e) => setPhoto(e.target.value)}
                               />
                       </form>
                             
