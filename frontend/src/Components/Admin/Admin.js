@@ -35,6 +35,8 @@ function Admin() {
     // e.preventDefault();
     const AdminUpdate = { name, clearance, has_skill_identifier, arrived_on_station, is_civilian, mos, rank, email, geocode, mgrs, branch_id, unit_id, installation_id, photo};
     console.log(AdminUpdate);
+    alert(`Member " ${name} " has been created`)
+
     // setLoad(true)
     fetch('http://localhost:8081/test/', {
       method: 'POST',
@@ -45,15 +47,18 @@ function Admin() {
     })
     .then(response => response.json()
     ).then(function (data) {
-      console.log(data);
-    });
+      console.log(data)
+      window.location.reload();
+    })
     };
     
-    
+
     const handleUpdate = (e) => {
       // e.preventDefault();
       const AdminUpdate = { name, clearance, has_skill_identifier, arrived_on_station, is_civilian, mos, rank, email, geocode, mgrs, branch_id, unit_id, installation_id, photo};
       console.log(AdminUpdate);
+      alert(`Member " ${name} " has been updated`)
+
       // setLoad(true)
       fetch(`http://localhost:8081/update/${name}`, {
         method: 'PATCH',
@@ -64,7 +69,8 @@ function Admin() {
       })
       .then(response => response.json()
       ).then(function (data) {
-        console.log(data);
+        console.log(data)
+        window.location.reload();
       });
       };
 
