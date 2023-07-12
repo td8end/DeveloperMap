@@ -47,7 +47,7 @@ export default function User() {
   return (
     <>
       <div className='userContainer'>
-        <Map coord={coord} zoom={zoom} />
+        <Map coord={coord} zoom={zoom} coder={coder}/>
       </div>
       <div >
         <div className='SearchField'>

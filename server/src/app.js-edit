@@ -6,15 +6,7 @@ const knex = require('knex')(require('../knexfile.js')["development"]);
 const  cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
-const db = knex({
-    client: 'pg',
-    connection: {
-        host : '127.0.0.1',
-        user : 'postgres',
-        password : 'docker',
-        database : 'devmap'
-    }
-});
+
 
 app.use(cors());
 app.use(express.json())
@@ -58,38 +50,38 @@ app.get('/personnel', cors(), (req, res) => {
         })
 })
 
-app.post('/', async (req, res) => {
-    const { data } = req.body;
-    let userToAdd = data;
+app.post('/test', async (req, res) => {
+    let userToAdd = req.body.data;
+    
     console.log("Adding a new user:", userToAdd.name)
 
-    if(req.cookies.idCookie) {
-        res.cookie('idCookie', [...req.cookies.idCookie, userToAdd.id.toString()]);
-    } else {
-        res.cookie('idCookie', [userToAdd.id.toString()]);
-    }
+    // if(req.cookies.idCookie) {
+    //     res.cookie('idCookie', [...req.cookies.idCookie, userToAdd.id.toString()]);
+    // } else {
+    //     res.cookie('idCookie', [userToAdd.id.toString()]);
+    // }
 
     //pushing new user to our personnelArray with the correct keys
-    usersToAdd = {
-        'name': userToAdd.username,
-        'clearance': userToAdd.userClearance,
-        'has_skill_identifier': userToAdd.userCoder,
-        'arrived_on_station': userToAdd.userArrivedOnStation,
-        'is_civilian': userToAdd.userCivilian,
-        'mos': userToAdd.userMos,
-        'rank': userToAdd.userRank,
-        'email': userToAdd.userEmail,
-        'geocode': userToAdd.userGeocode,
-        'mgrs': userToAdd.MGRS,
-        'branch_id': userToAdd.BranchID,
-        'unit_id': userToAdd.UnitID,
-        'installation_id': userToAdd.userBase,
-        'photo': userToAdd.userPhoto
+    userToAdd = {
+        'name': userToAdd.name,
+        'clearance': userToAdd.clearance,
+        'has_skill_identifier': userToAdd.has_skill_identifier,
+        'arrived_on_station': userToAdd.arrived_on_station,
+        'is_civilian': userToAdd.is_civilian,
+        'mos': userToAdd.mos,
+        'rank': userToAdd.rank,
+        'email': userToAdd.email,
+        'geocode': userToAdd.geocode,
+        'mgrs': userToAdd.mgrs,
+        'branch_id': userToAdd.branch_id,
+        'unit_id': userToAdd.unit_id,
+        'installation_id': userToAdd.installation_id,
+        'photo': userToAdd.photo
     }
 
     // personnelArray.push((usersToPush));
     try {
-        await db('personnel').insert(userToInsert);
+        await knex('personnel').insert(userToAdd);
         res.status(200).send('User added successfully');
     } catch (error) {
         res.status(500).send('Error inserting user to the database');

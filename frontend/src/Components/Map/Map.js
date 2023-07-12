@@ -1,6 +1,6 @@
 
 import './Map.css';
-import { useContext } from 'react';
+import { useContext,useState,useEffect } from 'react';
 import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import MarkerClusterGroup from 'react-leaflet-cluster';
@@ -11,10 +11,19 @@ import { AppContext } from '../../App';
 
 export default function Map(props) {
   const markers = useContext(AppContext)
+  const [filteredMarkers, setFilteredMarkers] = useState(markers);
+  
   // console.log(markers.geocode)
 console.log( "props cord is " + props.coord)
-console.log( "props cord is " + props.zoom)
-
+console.log( "props zoom is " + props.zoom)
+console.log( "props coder is " + props.coder)
+useEffect(() => {
+  if (props.coder === "true") {
+    setFilteredMarkers(markers.filter(marker => marker.has_skill_identifier.toString() === props.coder));
+  } else {
+    setFilteredMarkers(markers);
+  }
+}, [markers, props.coder]);
   const StyledPop = styled(Popup)`
   border-radius: 0;
   display: flex;
@@ -52,7 +61,7 @@ const createCustomClusterIcon = (cluster) => {
           <MarkerClusterGroup 
             chunkedLoading 
             iconCreateFunction={createCustomClusterIcon}>
-              {markers.map(marker => (
+              {filteredMarkers.map(marker => (
                 <Marker position={JSON.parse(marker.geocode)} icon={customIcon}>
                   <StyledPop>
                   <div className='popupView'>
