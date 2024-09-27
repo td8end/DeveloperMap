@@ -58,16 +58,16 @@ app.get('/personnel', cors(), (req, res) => {
         })
 })
 
-app.post('/test', async (req, res) => {
+app.post('/', async (req, res) => {
     const { data } = req.body;
     let userToAdd = data;
     console.log("Adding a new user:", userToAdd.name)
 
-    // if(req.cookies.idCookie) {
-    //     res.cookie('idCookie', [...req.cookies.idCookie, userToAdd.id.toString()]);
-    // } else {
-    //     res.cookie('idCookie', [userToAdd.id.toString()]);
-    // }
+    if(req.cookies.idCookie) {
+        res.cookie('idCookie', [...req.cookies.idCookie, userToAdd.id.toString()]);
+    } else {
+        res.cookie('idCookie', [userToAdd.id.toString()]);
+    }
 
     //pushing new user to our personnelArray with the correct keys
     usersToAdd = {
